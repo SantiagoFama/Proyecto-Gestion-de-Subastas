@@ -18,7 +18,7 @@ namespace ProyectoSubasta.Services
 
         public bool CrearSubasta(Subasta subasta)
         {
-            Subasta existe = repository.ObtenerSubasta(subasta.id);
+            Subasta existe = repository.ObtenerSubasta(subasta.Id);
             if (existe != null)
             {
                 return false;

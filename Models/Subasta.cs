@@ -5,7 +5,7 @@ namespace ProyectoSubasta.Models
 {
     public class Subasta
     {
-        public int id { get; set; }
+        public int id;
         public string articulo;
         public Subastador subastador;
         public decimal precioInicial;
@@ -71,12 +71,7 @@ namespace ProyectoSubasta.Models
         {
             get => pujas;
             set
-            {
-                if (value != pujas + 1)
-                {
-                    throw new Exception("El número de pujas solo puede incrementarse de uno en uno.");
-                }
-                else
+            { 
                 { pujas = value; }
             }
         }
@@ -94,6 +89,7 @@ namespace ProyectoSubasta.Models
                 }
             }
         }
+        public int Id { get; set; }
         public string Articulo { get; set; }
         public Subastador Subastador { get; set; }
         public DateTime Fecha { get; set; }
