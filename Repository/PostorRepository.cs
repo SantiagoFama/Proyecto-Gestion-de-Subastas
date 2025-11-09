@@ -1,0 +1,36 @@
+﻿using ProyectoSubasta.Models;
+using System.Collections.Generic;
+using System.Linq;
+using Microsoft.EntityFrameworkCore;
+
+namespace ProyectoSubasta.Repository
+{
+    public class PostorRepository(SubastaContext context)
+    {
+        public void AgregarPostor(Postor postor)
+        {
+            context.Postores.Add(postor);
+            context.SaveChanges();
+        }
+
+        public Postor ObtenerPorId(int dni)
+        {
+            return context.Postores.Find(dni);
+        }
+
+        public List<Postor> ObtenerTodos()
+        {
+            return context.Postores.ToList();
+        }
+
+        public void EliminarPostor(int dni)
+        {
+            Postor postorAEliminar = ObtenerPorId(dni);
+            if (postorAEliminar != null)
+            {
+                context.Postores.Remove(postorAEliminar);
+                context.SaveChanges();
+            }
+        }
+    }
+}
