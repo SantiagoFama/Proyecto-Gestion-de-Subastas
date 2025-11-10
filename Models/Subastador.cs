@@ -9,14 +9,12 @@ namespace ProyectoSubasta.Models
         private int _dni;
         private string _nombre;
         private string _apellido; 
-        private List<Subasta> _subastas;
 
         public Subastador(int dni, string nombre, string apellido)
         {
             Dni = dni;
             Nombre = nombre;
             Apellido = apellido;
-            Subastas = new List<Subasta>();
         }
 
         public override string ToString()
@@ -54,11 +52,6 @@ namespace ProyectoSubasta.Models
                     throw new ArgumentException("El apellido no puede estar vacío.");
                 _apellido = value;
             }
-        }
-        public List<Subasta> Subastas
-        {
-            get => _subastas;
-            set => _subastas = value;
         }
     }
 }
