@@ -101,13 +101,6 @@ namespace ProyectoSubasta.Migrations
                     b.ToTable("Subastadores");
                 });
 
-            modelBuilder.Entity("ProyectoSubasta.Models.Postor", b =>
-                {
-                    b.HasOne("ProyectoSubasta.Models.Subasta", null)
-                        .WithMany("Postores")
-                        .HasForeignKey("SubastaId");
-                });
-
             modelBuilder.Entity("ProyectoSubasta.Models.Subasta", b =>
                 {
                     b.HasOne("ProyectoSubasta.Models.Postor", "Ganador")
