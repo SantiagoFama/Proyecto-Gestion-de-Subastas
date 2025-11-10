@@ -29,7 +29,7 @@ namespace ProyectoSubasta.Services
         public bool Pujar(int subastaId, Postor postor)
         {
             var subasta = repository.ObtenerSubasta(subastaId);
-            if (subasta.finalizada)
+            if (subasta.Finalizada)
             {
                 return false;
             }
@@ -41,7 +41,7 @@ namespace ProyectoSubasta.Services
         {
             var subasta = repository.ObtenerSubasta(subastaId);
 
-            subasta.finalizada = true;
+            subasta.Finalizada = true;
             return repository.ActualizarSubasta(subasta);
         }
 
@@ -97,7 +97,7 @@ namespace ProyectoSubasta.Services
         {
             var subasta = repository.ObtenerSubasta(subastaId);
 
-            subasta.postores.Remove(postor);
+            subasta.Postores.Remove(postor);
             return repository.ActualizarSubasta(subasta);
         }
 

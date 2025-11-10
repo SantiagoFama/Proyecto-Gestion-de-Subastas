@@ -1,22 +1,23 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.Security.Cryptography;
 
 namespace ProyectoSubasta.Models
 {
     public class Subasta
     {
-        public int id;
-        public string articulo;
-        public Subastador subastador;
-        public decimal precioInicial;
-        public decimal precioPuja;
-        public DateTime fecha;
-        public DateTime horarioInicio;
-        public decimal duracion;
-        public int pujas = 0;
-        public Postor? ganador;
-        public List<Postor> postores;
-        public bool finalizada;
+        private int _id;
+        private string _articulo;
+        private Subastador _subastador;
+        private decimal _precioInicial;
+        private decimal _precioPuja;
+        private DateTime _fecha;
+        private DateTime _horarioInicio;
+        private decimal _duracion;
+        private int _pujas;
+        private Postor? _ganador;
+        private List<Postor> _postores;
+        private bool _finalizada;
 
         public Subasta(string articulo, Subastador subastador, decimal precioInicial, decimal precioPuja, DateTime fecha, DateTime horarioInicio, decimal duracion)
         {
@@ -29,7 +30,7 @@ namespace ProyectoSubasta.Models
             Duracion = duracion;
             Postores = new List<Postor>();
             Finalizada = false;
-            //pujas = 0;
+            Pujas = 0;
         }
         public Subasta()
         {
@@ -38,42 +39,39 @@ namespace ProyectoSubasta.Models
 
         public decimal PrecioInicial
         {
-            get => precioInicial;
+            get => _precioInicial;
             set
             {
                 if (value < 0)
                     throw new ArgumentException("El precio inicial no puede ser negativo.");
-                precioInicial = value;
+                _precioInicial = value;
             }
         }
         public decimal PrecioPuja
         {
-            get => precioPuja;
+            get => _precioPuja;
             set
             {
                 if (value < 0)
                     throw new ArgumentException("El precio de la puja no puede ser negativo.");
-                precioPuja = value;
+                _precioPuja = value;
             }
         }
 
         public decimal Duracion
         {
-            get => duracion;
+            get => _duracion;
             set
             {
                 if (value < 0)
                     throw new ArgumentException("La duración no puede ser negativa.");
-                duracion = value;
+                _duracion = value;
             }
         }
         public int Pujas
         {
-            get => pujas;
-            set
-            { 
-                { pujas = value; }
-            }
+            get => _pujas;
+            set => _pujas = value;
         }
         public string Estado
         {
@@ -89,13 +87,62 @@ namespace ProyectoSubasta.Models
                 }
             }
         }
-        public int Id { get; set; }
-        public string Articulo { get; set; }
-        public Subastador Subastador { get; set; }
-        public DateTime Fecha { get; set; }
-        public DateTime HorarioInicio { get; set; }
-        public Postor? Ganador { get; set; }
-        public List<Postor> Postores { get; set; }
-        public bool Finalizada { get; set; }
+        public int Id
+        {
+            get => _id;
+            set => _id = value;
+        }
+
+        public string Articulo
+        {
+            get => _articulo;
+            set
+            {
+                if (string.IsNullOrWhiteSpace(value))
+                    throw new ArgumentException("El artículo no puede estar vacío.");
+                _articulo = value;
+            }
+        }
+
+        public Subastador Subastador
+        {
+            get => _subastador;
+            set => _subastador = value;
+        }
+
+        public DateTime Fecha
+        {
+            get => _fecha;
+            set
+            {
+                if (value.Date < DateTime.Today)
+                    throw new ArgumentException("La fecha de la subasta no puede ser anterior a hoy.");
+                _fecha = value;
+            }
+        }
+
+        public DateTime HorarioInicio
+        {
+            get => _horarioInicio;
+            set => _horarioInicio = value;
+        }
+
+        public Postor? Ganador
+        {
+            get => _ganador;
+            set => _ganador = value;
+        }
+
+        public List<Postor> Postores
+        {
+            get => _postores;
+            set => _postores = value;
+        }
+
+        public bool Finalizada
+        {
+            get => _finalizada;
+            set => _finalizada = value;
+        }
     }
 }

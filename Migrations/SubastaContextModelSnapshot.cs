@@ -31,19 +31,14 @@ namespace ProyectoSubasta.Migrations
                         .IsRequired()
                         .HasColumnType("TEXT");
 
-                    b.Property<int?>("Subastaid")
-                        .HasColumnType("INTEGER");
-
                     b.HasKey("Dni");
-
-                    b.HasIndex("Subastaid");
 
                     b.ToTable("Postores");
                 });
 
             modelBuilder.Entity("ProyectoSubasta.Models.Subasta", b =>
                 {
-                    b.Property<int>("id")
+                    b.Property<int>("Id")
                         .ValueGeneratedOnAdd()
                         .HasColumnType("INTEGER");
 
@@ -78,7 +73,7 @@ namespace ProyectoSubasta.Migrations
                     b.Property<int>("SubastadorDni")
                         .HasColumnType("INTEGER");
 
-                    b.HasKey("id");
+                    b.HasKey("Id");
 
                     b.HasIndex("GanadorDni");
 
@@ -110,7 +105,7 @@ namespace ProyectoSubasta.Migrations
                 {
                     b.HasOne("ProyectoSubasta.Models.Subasta", null)
                         .WithMany("Postores")
-                        .HasForeignKey("Subastaid");
+                        .HasForeignKey("SubastaId");
                 });
 
             modelBuilder.Entity("ProyectoSubasta.Models.Subasta", b =>
