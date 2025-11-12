@@ -18,7 +18,7 @@ namespace ProyectoSubasta.Repository
             return context.Subastadores.ToList();
         }
 
-        public Subastador ObtenerPorId(int dni)
+        public Subastador? ObtenerPorId(int dni)
         {
             return context.Subastadores.Find(dni);
         }

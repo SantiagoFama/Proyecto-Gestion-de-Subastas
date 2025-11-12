@@ -78,7 +78,7 @@
             // 
             AutoScaleDimensions = new System.Drawing.SizeF(8F, 20F);
             AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            ClientSize = new System.Drawing.Size(1211, 634);
+            ClientSize = new System.Drawing.Size(1280, 719);
             Controls.Add(btnMisSubastasSubastador);
             Controls.Add(btnCrearSubasta);
             Controls.Add(btnVerSubastas);

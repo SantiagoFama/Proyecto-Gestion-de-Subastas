@@ -68,7 +68,7 @@
             // 
             AutoScaleDimensions = new System.Drawing.SizeF(8F, 20F);
             AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            ClientSize = new System.Drawing.Size(942, 597);
+            ClientSize = new System.Drawing.Size(1008, 607);
             Controls.Add(btnEliminar);
             Controls.Add(btnFinalizar);
             Controls.Add(dgvSubastas);

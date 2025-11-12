@@ -59,6 +59,7 @@ namespace ProyectoSubasta.Controllers
         {
             return service.ObtenerSubasta(subastaId);
         }
+
         public List<Subasta> ListaSubastasPorPostor(int dni)
         {
             return service.ListaSubastasPorPostor(dni);

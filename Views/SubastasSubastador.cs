@@ -69,6 +69,8 @@ namespace ProyectoSubasta.Views
                 MessageBox.Show("Por favor, seleccione una subasta de la grilla para Finalizar.");
                 return;
             }
+
+
         }
 
         private void btnEliminar_Click(object sender, EventArgs e)

@@ -9,20 +9,20 @@ namespace ProyectoSubasta.Views
 {
     public partial class ListaSubastasView : Form
     {
-        private readonly SubastaController subastacontroller;
-        private readonly int postorId;  
+        private readonly SubastaController subastaController;
+        private readonly int postorId;
 
         public ListaSubastasView(SubastaContext context, int PostorId)
         {
             InitializeComponent();
-            subastacontroller = new SubastaController(context);
+            subastaController = new SubastaController(context);
             postorId = PostorId;
         }
 
 
         private void CargarSubastasGrid()
         {
-            List<Subasta> lista = subastacontroller.ListaSubastas();
+            List<Subasta> lista = subastaController.ListaSubastas();
             dgvSubastas.DataSource = null;
             dgvSubastas.DataSource = lista;
             PersonalizarGrid();
@@ -56,36 +56,20 @@ namespace ProyectoSubasta.Views
         }
 
 
-        private void btn_AbrirSubasta_Click(object sender, EventArgs e)
+        private void btn_IngresarSubasta_Click(object sender, EventArgs e)
         {
             if (dgvSubastas.CurrentRow == null)
             {
-                MessageBox.Show("Por favor, seleccione una subasta de la grilla para abrir.");
+                MessageBox.Show("Por favor, seleccione una subasta de la grilla para Ingresar.");
                 return;
             }
 
             var fila = dgvSubastas.CurrentRow;
             int id = (int)fila.Cells["id"].Value;
 
-            bool ok = subastacontroller.IngresoPostor(id, postorId);
-            if(ok)MessageBox.Show("Ingresaste Correctamente. Para interactuar ve a 'Mis Subastas'.");
-            else MessageBox.Show("Ya estas inscripto en esta subasta.");
-        }
-
-
-
-        private void btn_EliminarSubasta_Click(object sender, EventArgs e)
-        {
-            if (dgvSubastas.CurrentRow == null)
-            {
-                MessageBox.Show("Por favor, seleccione una subasta de la grilla para eliminar.");
-                return;
-            }
-
-            var fila = dgvSubastas.CurrentRow;
-            int id = (int)fila.Cells["id"].Value;
-            subastacontroller.EliminarSubasta(id);
-            CargarSubastasGrid();
+            bool ok = subastaController.IngresoPostor(id, postorId);
+            if (ok) MessageBox.Show("Ingresaste Correctamente. Para interactuar ve a 'Mis Subastas'.");
+            else MessageBox.Show("Ya ingresaste en esta subasta.");
         }
 
         private void ListaSubastasView_Load(object sender, EventArgs e)

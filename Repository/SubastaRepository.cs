@@ -21,9 +21,9 @@ namespace ProyectoSubasta.Repository
             return true;
         }
 
-        public Subasta ObtenerSubasta(int subastaId)
+        public Subasta? ObtenerSubasta(int subastaId)
         {
-            return _context.Subastas.Include(s => s.Postores).FirstOrDefault(s => s.Id == subastaId);
+            return _context.Subastas.Include(s => s.Subastador).FirstOrDefault(s => s.Id == subastaId);
         }
 
         public bool ActualizarSubasta(Subasta subasta)
@@ -44,14 +44,20 @@ namespace ProyectoSubasta.Repository
             _context.SaveChanges();
             return true;
         }
+
         public List<Subasta> ListaSubastas()
         {
-            return _context.Subastas.ToList();
+            return _context.Subastas.Include(s => s.Subastador).ToList();
         }
 
         public List<Subasta> ListaSubastasPorPostor(int dni)
         {
-            return _context.Subastas.Include(s => s.Postores).Where(subasta => subasta.Postores.Any(postor => postor.Dni == dni)).ToList();
+            return _context.Subastas.Include(s => s.Postores).Where(s => s.Postores.Any(p => p.Dni == dni)).ToList();
+        }
+
+        public Postor? ObtenerPostor(int postorId)
+        {
+            return _context.Postores.Find(postorId);
         }
     }
 }

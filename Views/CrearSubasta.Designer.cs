@@ -107,6 +107,7 @@
             // 
             // num_PrecioInicial
             // 
+            num_PrecioInicial.Increment = new decimal(new int[] { 10, 0, 0, 0 });
             num_PrecioInicial.Location = new System.Drawing.Point(114, 107);
             num_PrecioInicial.Name = "num_PrecioInicial";
             num_PrecioInicial.Size = new System.Drawing.Size(150, 27);
@@ -173,6 +174,7 @@
             // 
             // numDuracion
             // 
+            numDuracion.Increment = new decimal(new int[] { 10, 0, 0, 0 });
             numDuracion.Location = new System.Drawing.Point(115, 320);
             numDuracion.Name = "numDuracion";
             numDuracion.Size = new System.Drawing.Size(150, 27);

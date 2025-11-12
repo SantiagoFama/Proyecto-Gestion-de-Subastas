@@ -24,7 +24,7 @@ namespace ProyectoSubasta.Models
             Articulo = articulo;
             Subastador = subastador;
             PrecioInicial = precioInicial;
-            PrecioPuja = precioInicial;
+            PrecioPuja = precioPuja;
             Fecha = fecha;
             HorarioInicio = horarioInicio;
             Duracion = duracion;
@@ -42,8 +42,8 @@ namespace ProyectoSubasta.Models
             get => _precioInicial;
             set
             {
-                if (value < 0)
-                    throw new ArgumentException("El precio inicial no puede ser negativo.");
+                if (value <= 0)
+                    throw new ArgumentException("El precio inicial no puede ser menor que 0.");
                 _precioInicial = value;
             }
         }
@@ -52,8 +52,8 @@ namespace ProyectoSubasta.Models
             get => _precioPuja;
             set
             {
-                if (value < 0)
-                    throw new ArgumentException("El precio de la puja no puede ser negativo.");
+                if (value <= 0)
+                    throw new ArgumentException("El precio de la puja no puede ser menor que 0.");
                 _precioPuja = value;
             }
         }
@@ -63,8 +63,8 @@ namespace ProyectoSubasta.Models
             get => _duracion;
             set
             {
-                if (value < 0)
-                    throw new ArgumentException("La duración no puede ser negativa.");
+                if (value < 30)
+                    throw new ArgumentException("La duración no puede ser menor a 30 minutos.");
                 _duracion = value;
             }
         }
@@ -126,6 +126,7 @@ namespace ProyectoSubasta.Models
             get => _finalizada;
             set => _finalizada = value;
         }
+
         public string Estado
         {
             get
