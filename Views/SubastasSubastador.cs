@@ -23,7 +23,7 @@ namespace ProyectoSubasta.Views
 
         private void CargarSubastasGrid()
         {
-            List<Subasta> lista = controller.ListaSubastasPorSubastador(subastadorId);
+            List<Subasta> lista = controller.FiltrarSubastasPorSubastador(subastadorId);
             dgvSubastas.DataSource = null;
             dgvSubastas.DataSource = lista;
             PersonalizarGrid();
@@ -66,8 +66,12 @@ namespace ProyectoSubasta.Views
                 return;
             }
 
-
+            var fila = dgvSubastas.CurrentRow;
+            int subastaId = (int)fila.Cells["Id"].Value; 
+            controller.FinalizarSubasta(subastaId);
+            CargarSubastasGrid();
         }
+
 
         private void btnEliminar_Click(object sender, EventArgs e)
         {
@@ -78,8 +82,8 @@ namespace ProyectoSubasta.Views
             }
 
             var fila = dgvSubastas.CurrentRow;
-            int id = (int)fila.Cells["id"].Value;
-            controller.EliminarSubasta(id);
+            int subastaId = (int)fila.Cells["Id"].Value;
+            controller.EliminarSubasta(subastaId);
             CargarSubastasGrid();
         }
     }

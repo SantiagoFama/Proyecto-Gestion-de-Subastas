@@ -41,6 +41,8 @@ namespace ProyectoSubasta.Services
         public bool FinalizarSubasta(int subastaId)
         {
             Subasta? subasta = repository.ObtenerSubasta(subastaId);
+            if (subasta.Finalizada)
+                return false;
 
             subasta.Finalizada = true;
             return repository.ActualizarSubasta(subasta);
@@ -106,14 +108,14 @@ namespace ProyectoSubasta.Services
         }
 
 
-        public List<Subasta> ListaSubastasPorPostor(int dni)
+        public List<Subasta> FiltrarSubastasPorPostor(int dni)
         {
-            return repository.ListaSubastasPorPostor(dni);
+            return repository.FiltrarSubastasPorPostor(dni);
         }
 
-        public List<Subasta> ListaSubastasPorSubastador(int subastadorId)
+        public List<Subasta> FiltrarSubastasPorSubastador(int subastadorId)
         {
-            return repository.ListaSubastasPorSubastador(subastadorId);
+            return repository.FiltrarSubastasPorSubastador(subastadorId);
         }
     }
 }
