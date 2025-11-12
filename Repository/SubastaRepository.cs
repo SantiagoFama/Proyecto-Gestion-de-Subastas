@@ -52,7 +52,13 @@ namespace ProyectoSubasta.Repository
 
         public List<Subasta> ListaSubastasPorPostor(int dni)
         {
-            return _context.Subastas.Include(s => s.Postores).Where(s => s.Postores.Any(p => p.Dni == dni)).ToList();
+            return _context.Subastas.Include(s => s.Postores).Include(s => s.Subastador)
+                .Where(s => s.Postores.Any(p => p.Dni == dni)).ToList();
+        }
+
+        public List<Subasta> ListaSubastasPorSubastador(int subastadorId)
+        {
+            return _context.Subastas.Include(s => s.Subastador).Where(s => s.Subastador.Dni == subastadorId).ToList();
         }
 
         public Postor? ObtenerPostor(int postorId)

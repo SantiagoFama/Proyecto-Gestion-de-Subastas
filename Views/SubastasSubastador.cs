@@ -23,7 +23,7 @@ namespace ProyectoSubasta.Views
 
         private void CargarSubastasGrid()
         {
-            List<Subasta> lista = controller.ListaSubastasPorPostor(subastadorId);
+            List<Subasta> lista = controller.ListaSubastasPorSubastador(subastadorId);
             dgvSubastas.DataSource = null;
             dgvSubastas.DataSource = lista;
             PersonalizarGrid();

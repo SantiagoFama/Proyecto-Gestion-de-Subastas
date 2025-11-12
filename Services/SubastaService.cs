@@ -110,5 +110,10 @@ namespace ProyectoSubasta.Services
         {
             return repository.ListaSubastasPorPostor(dni);
         }
+
+        public List<Subasta> ListaSubastasPorSubastador(int subastadorId)
+        {
+            return repository.ListaSubastasPorSubastador(subastadorId);
+        }
     }
 }

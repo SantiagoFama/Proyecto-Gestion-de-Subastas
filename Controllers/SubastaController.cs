@@ -1,4 +1,5 @@
-﻿using ProyectoSubasta.Models;
+﻿using Microsoft.EntityFrameworkCore;
+using ProyectoSubasta.Models;
 using ProyectoSubasta.Repository;
 using ProyectoSubasta.Services;
 using System;
@@ -63,7 +64,12 @@ namespace ProyectoSubasta.Controllers
         public List<Subasta> ListaSubastasPorPostor(int dni)
         {
             return service.ListaSubastasPorPostor(dni);
-        } 
+        }
+
+        public List<Subasta> ListaSubastasPorSubastador(int subastadorId)
+        {
+            return service.ListaSubastasPorSubastador(subastadorId);
+        }
     }
 }
 
