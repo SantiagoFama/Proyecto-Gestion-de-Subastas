@@ -7,15 +7,15 @@ using System.Collections.Generic;
 
 namespace ProyectoSubasta.Views
 {
-    public partial class CrearUserView : Form
+    public partial class CrearUser : Form
     {
         private readonly SubastadorController subastadorController;
         private readonly PostorController postorController;
 
-        public int DniUsuarioLogueado { get; set; }
-        public string RolUsuarioLogueado { get; set; }
+        public int DniUsuarioLogueado { get; set;}
+        public string RolUsuarioLogueado { get; set;}
 
-        public CrearUserView(DBcontext context)
+        public CrearUser(DBcontext context)
         {
             InitializeComponent();
 
@@ -34,46 +34,53 @@ namespace ProyectoSubasta.Views
 
         private void btnAgregar_Click(object sender, EventArgs e)
         {
-            if (string.IsNullOrWhiteSpace(txtDni.Text) ||
-                string.IsNullOrWhiteSpace(txtNombre.Text) ||
-                string.IsNullOrWhiteSpace(txtApellido.Text))
+            try
             {
-                MessageBox.Show("Por favor, complete todos los campos.");
-                return;
-            }
+                if (!int.TryParse(txtDni.Text, out int dni))
+                {
+                    MessageBox.Show("El DNI tiene que ser un numero.");
+                    return;
+                }
 
-            if (!int.TryParse(txtDni.Text, out int dni))
-            {
-                MessageBox.Show("El DNI debe ser un número.");
-                return;
-            }
-            string nombre = txtNombre.Text;
-            string apellido = txtApellido.Text;
-            string rol = comboBox1.SelectedItem?.ToString();
+                string nombre = txtNombre.Text;
+                string apellido = txtApellido.Text;
+                string rol = comboBox1.SelectedItem?.ToString();
 
-            if (rol == "Postor")
-            {
-                bool ok = postorController.CrearPostor(dni, nombre, apellido);
-                if (!ok) MessageBox.Show("Ya existe un postor con ese DNI.");
+                if (rol == "Postor")
+                {
+                    bool ok = postorController.CrearPostor(dni, nombre, apellido);
+                    if (!ok)
+                    {
+                        MessageBox.Show("Ya existe un postor con ese DNI.");
+                    }
+                    else
+                    {
+                        ActualizarGrid();
+                        MessageBox.Show("Postor creado con éxito.");
+                    }
+                }
+                else if (rol == "Subastador")
+                {
+                    bool ok = subastadorController.CrearSubastador(dni, nombre, apellido);
+                    if (!ok) 
+                    {
+                        MessageBox.Show("Ya existe un Subastador con ese DNI.");
+                    }
+                    else
+                    {
+                        MessageBox.Show("Subastador creado con éxito.");
+                        ActualizarGrid();
+                    }
+                }
                 else
                 {
-                    ActualizarGrid();
-                    MessageBox.Show("Postor creado con éxito.");
+                    MessageBox.Show("Seleccione un rol válido.");
                 }
             }
-            else if (rol == "Subastador")
+
+            catch (Exception ex)
             {
-                bool ok = subastadorController.CrearSubastador(dni, nombre, apellido);
-                if (!ok) MessageBox.Show("Ya existe un Subastador con ese DNI.");
-                else
-                {
-                    MessageBox.Show("Subastador creado con éxito.");
-                    ActualizarGrid();
-                }
-            }
-            else
-            {
-                MessageBox.Show("Seleccione un rol válido.");
+                MessageBox.Show($"error: {ex.Message}");
             }
         }
 
@@ -136,6 +143,7 @@ namespace ProyectoSubasta.Views
             dgvUsuarios.DataSource = null;
             dgvUsuarios.DataSource = listaPostores.Concat(listaSubastadores).ToList();
         }
+
 
         private void btnIngresar_Click(object sender, EventArgs e)
         {

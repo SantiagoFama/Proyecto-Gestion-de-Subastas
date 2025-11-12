@@ -18,7 +18,7 @@ namespace ProyectoSubasta.Services
 
         public bool CrearSubasta(Subasta subasta)
         {
-            Subasta existe = repository.ObtenerSubasta(subasta.Id);
+            Subasta? existe = repository.ObtenerSubasta(subasta.Id);
             if (existe != null)
                 return false;
 
@@ -28,7 +28,7 @@ namespace ProyectoSubasta.Services
 
         public bool Pujar(int subastaId, int postorId)
         {
-            Subasta subasta = repository.ObtenerSubasta(subastaId);
+            Subasta? subasta = repository.ObtenerSubasta(subastaId);
             if (subasta.Finalizada)
                 return false;
             
@@ -40,7 +40,7 @@ namespace ProyectoSubasta.Services
 
         public bool FinalizarSubasta(int subastaId)
         {
-            Subasta subasta = repository.ObtenerSubasta(subastaId);
+            Subasta? subasta = repository.ObtenerSubasta(subastaId);
 
             subasta.Finalizada = true;
             return repository.ActualizarSubasta(subasta);
@@ -49,7 +49,7 @@ namespace ProyectoSubasta.Services
 
         public Postor ObtenerGanador(int subastaId)
         {
-            Subasta subasta = repository.ObtenerSubasta(subastaId);
+            Subasta? subasta = repository.ObtenerSubasta(subastaId);
 
             return subasta.Ganador;
         }
@@ -57,13 +57,13 @@ namespace ProyectoSubasta.Services
 
         public bool IngresoPostor(int subastaId, int postorId)
         {
-            Subasta subasta = repository.ObtenerSubasta(subastaId);
+            Subasta? subasta = repository.ObtenerSubastaConPostores(subastaId);
 
             bool estaIngresado = subasta.Postores.Any(p => p.Dni == postorId);
             if (estaIngresado)
                 return false;
 
-            Postor postor = repository.ObtenerPostor(postorId);
+            Postor? postor = repository.ObtenerPostor(postorId);
             subasta.Postores.Add(postor);
             return repository.ActualizarSubasta(subasta);
         }
@@ -71,13 +71,13 @@ namespace ProyectoSubasta.Services
 
         public bool EgresoPostor(int subastaId, int postorId)
         {
-            Subasta subasta = repository.ObtenerSubasta(subastaId);
+            Subasta? subasta = repository.ObtenerSubastaConPostores(subastaId);
 
             bool estaIngresado = subasta.Postores.Any(p => p.Dni == postorId);
             if (!estaIngresado)
                 return false;
 
-            Postor postor = repository.ObtenerPostor(postorId);
+            Postor? postor = repository.ObtenerPostor(postorId);
             subasta.Postores.Remove(postor);
             return repository.ActualizarSubasta(subasta);
         }

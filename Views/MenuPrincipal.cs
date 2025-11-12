@@ -4,22 +4,21 @@ using System.Windows.Forms;
 
 namespace ProyectoSubasta.Views
 {
-    public partial class MenuView : Form
+    public partial class MenuPrincipal : Form
     {
-        private CrearUserView crearuserView;
+        private CrearUser crearuserView;
         private CrearSubasta crearSubastaView;
         private readonly DBcontext context;
 
         private int dniUsuario;
         private string rolUsuario;
 
-        public MenuView()
+        public MenuPrincipal()
         {
             InitializeComponent();
-            //subastaView = new SubastaView();
-            //listaSubastasView = new ListaSubastasView(context);
+
             context = new DBcontext();
-            crearuserView = new CrearUserView(context);
+            crearuserView = new CrearUser(context);
             crearSubastaView = new CrearSubasta(context);
         }
 
@@ -39,7 +38,7 @@ namespace ProyectoSubasta.Views
 
         private void btnVerSubastas_Click(object sender, EventArgs e)
         {
-            CargarVista(new ListaSubastasView(context, dniUsuario));
+            CargarVista(new ListaSubastas(context, dniUsuario));
         }
 
         private void btnMisSubastasPostor_Click(object sender, EventArgs e)

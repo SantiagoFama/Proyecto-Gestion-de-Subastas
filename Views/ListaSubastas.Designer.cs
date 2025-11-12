@@ -1,6 +1,6 @@
 ﻿namespace ProyectoSubasta.Views
 {
-    partial class ListaSubastasView
+    partial class ListaSubastas
     {
         private System.Windows.Forms.DataGridView dgvSubastas;
         private System.Windows.Forms.Button btn_IngresarSubasta;

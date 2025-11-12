@@ -109,13 +109,16 @@
             // 
             num_PrecioInicial.Increment = new decimal(new int[] { 10, 0, 0, 0 });
             num_PrecioInicial.Location = new System.Drawing.Point(114, 107);
+            num_PrecioInicial.Maximum = new decimal(new int[] { 999999, 0, 0, 0 });
             num_PrecioInicial.Name = "num_PrecioInicial";
             num_PrecioInicial.Size = new System.Drawing.Size(150, 27);
             num_PrecioInicial.TabIndex = 6;
             // 
             // num_PrecioPuja
             // 
+            num_PrecioPuja.Increment = new decimal(new int[] { 10, 0, 0, 0 });
             num_PrecioPuja.Location = new System.Drawing.Point(114, 154);
+            num_PrecioPuja.Maximum = new decimal(new int[] { 999999, 0, 0, 0 });
             num_PrecioPuja.Name = "num_PrecioPuja";
             num_PrecioPuja.Size = new System.Drawing.Size(150, 27);
             num_PrecioPuja.TabIndex = 7;
@@ -176,6 +179,7 @@
             // 
             numDuracion.Increment = new decimal(new int[] { 10, 0, 0, 0 });
             numDuracion.Location = new System.Drawing.Point(115, 320);
+            numDuracion.Maximum = new decimal(new int[] { 999999, 0, 0, 0 });
             numDuracion.Name = "numDuracion";
             numDuracion.Size = new System.Drawing.Size(150, 27);
             numDuracion.TabIndex = 17;

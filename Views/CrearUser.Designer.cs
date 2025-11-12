@@ -1,6 +1,6 @@
 ﻿namespace ProyectoSubasta.Views
 {
-    partial class CrearUserView
+    partial class CrearUser
     {
         private System.ComponentModel.IContainer components = null;
         private System.Windows.Forms.TextBox txtDni;
@@ -138,7 +138,7 @@
             dgvUsuarios.Name = "dgvUsuarios";
             dgvUsuarios.RowHeadersWidth = 51;
             dgvUsuarios.SelectionMode = System.Windows.Forms.DataGridViewSelectionMode.FullRowSelect;
-            dgvUsuarios.Size = new System.Drawing.Size(443, 257);
+            dgvUsuarios.Size = new System.Drawing.Size(463, 257);
             dgvUsuarios.TabIndex = 12;
             // 
             // btnIngresar
@@ -152,7 +152,7 @@
             btnIngresar.UseVisualStyleBackColor = true;
             btnIngresar.Click += btnIngresar_Click;
             // 
-            // CrearUserView
+            // CrearUser
             // 
             AutoScaleDimensions = new System.Drawing.SizeF(8F, 20F);
             AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
@@ -170,7 +170,7 @@
             Controls.Add(txtNombre);
             Controls.Add(txtDni);
             Margin = new System.Windows.Forms.Padding(3, 4, 3, 4);
-            Name = "CrearUserView";
+            Name = "CrearUser";
             Text = "Crear Usuario";
             ((System.ComponentModel.ISupportInitialize)dgvUsuarios).EndInit();
             ResumeLayout(false);

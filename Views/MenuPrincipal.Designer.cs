@@ -1,6 +1,6 @@
 ﻿namespace ProyectoSubasta.Views
 {
-    partial class MenuView
+    partial class MenuPrincipal
     {
         private System.ComponentModel.IContainer components = null;
         private System.Windows.Forms.Panel panel_contenedor;

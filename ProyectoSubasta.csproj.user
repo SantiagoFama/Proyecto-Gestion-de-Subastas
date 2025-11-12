@@ -5,13 +5,13 @@
     <Compile Update="Views\CrearSubasta.cs">
       <SubType>Form</SubType>
     </Compile>
-    <Compile Update="Views\ListaSubastasView.cs">
+    <Compile Update="Views\ListaSubastas.cs">
       <SubType>Form</SubType>
     </Compile>
-    <Compile Update="Views\CrearUserView.cs">
+    <Compile Update="Views\CrearUser.cs">
       <SubType>Form</SubType>
     </Compile>
-    <Compile Update="Views\MenuView.cs">
+    <Compile Update="Views\MenuPrincipal.cs">
       <SubType>Form</SubType>
     </Compile>
     <Compile Update="Views\SubastasPostor.cs">

@@ -7,12 +7,12 @@ using System.Windows.Forms;
 
 namespace ProyectoSubasta.Views
 {
-    public partial class ListaSubastasView : Form
+    public partial class ListaSubastas : Form
     {
         private readonly SubastaController subastaController;
         private readonly int postorId;
 
-        public ListaSubastasView(DBcontext context, int PostorId)
+        public ListaSubastas(DBcontext context, int PostorId)
         {
             InitializeComponent();
             subastaController = new SubastaController(context);
