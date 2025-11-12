@@ -11,7 +11,7 @@ namespace ProyectoSubasta.Controllers
     {
         private readonly SubastaService service;
 
-        public SubastaController(SubastaContext context)
+        public SubastaController(DBcontext context)
         {
             service = new SubastaService(context);
         }

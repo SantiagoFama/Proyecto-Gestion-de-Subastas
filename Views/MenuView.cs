@@ -8,7 +8,7 @@ namespace ProyectoSubasta.Views
     {
         private CrearUserView crearuserView;
         private CrearSubasta crearSubastaView;
-        private readonly SubastaContext context;
+        private readonly DBcontext context;
 
         private int dniUsuario;
         private string rolUsuario;
@@ -18,7 +18,7 @@ namespace ProyectoSubasta.Views
             InitializeComponent();
             //subastaView = new SubastaView();
             //listaSubastasView = new ListaSubastasView(context);
-            context = new SubastaContext();
+            context = new DBcontext();
             crearuserView = new CrearUserView(context);
             crearSubastaView = new CrearSubasta(context);
         }

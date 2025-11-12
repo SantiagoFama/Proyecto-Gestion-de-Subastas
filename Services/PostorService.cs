@@ -9,7 +9,7 @@ namespace ProyectoSubasta.Services
     {
         private readonly PostorRepository repository;
 
-        public PostorService(SubastaContext context)
+        public PostorService(DBcontext context)
         {
             repository = new PostorRepository(context);
         }

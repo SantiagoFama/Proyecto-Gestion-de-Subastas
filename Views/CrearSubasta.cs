@@ -11,7 +11,7 @@ namespace ProyectoSubasta.Views
         private readonly SubastaController subastaController;
         private readonly SubastadorController subastadorController;
 
-        public CrearSubasta(SubastaContext context)
+        public CrearSubasta(DBcontext context)
         {
             InitializeComponent();
 

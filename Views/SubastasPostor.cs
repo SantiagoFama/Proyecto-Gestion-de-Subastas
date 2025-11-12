@@ -13,7 +13,7 @@ namespace ProyectoSubasta.Views
         private readonly SubastaController controller;
         private readonly int postorId;
 
-        public SubastasPostor(SubastaContext context,int PostorId)
+        public SubastasPostor(DBcontext context,int PostorId)
         {
             InitializeComponent();
             controller = new SubastaController(context);

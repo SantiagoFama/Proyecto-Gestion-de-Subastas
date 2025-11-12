@@ -5,7 +5,7 @@ using Microsoft.EntityFrameworkCore;
 
 namespace ProyectoSubasta.Repository
 {
-    public class PostorRepository(SubastaContext context)
+    public class PostorRepository(DBcontext context)
     {
         public void AgregarPostor(Postor postor)
         {

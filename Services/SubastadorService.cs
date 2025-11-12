@@ -9,7 +9,7 @@ namespace ProyectoSubasta.Services
     {
         private readonly SubastadorRepository repository;
 
-        public SubastadorService(SubastaContext context)
+        public SubastadorService(DBcontext context)
         {
             repository = new SubastadorRepository(context);
         }

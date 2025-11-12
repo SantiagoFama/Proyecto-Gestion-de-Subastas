@@ -5,7 +5,7 @@ using Microsoft.EntityFrameworkCore;
 
 namespace ProyectoSubasta.Repository
 {
-    public class SubastadorRepository(SubastaContext context)
+    public class SubastadorRepository(DBcontext context)
     {
         public void Agregar(Subastador subastador)
         {

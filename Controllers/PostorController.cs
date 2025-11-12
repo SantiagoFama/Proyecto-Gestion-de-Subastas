@@ -10,7 +10,7 @@ namespace ProyectoSubasta.Controllers
     {
         private readonly PostorService Service;
 
-        public PostorController(SubastaContext context)
+        public PostorController(DBcontext context)
         {
             Service = new PostorService(context);
         }

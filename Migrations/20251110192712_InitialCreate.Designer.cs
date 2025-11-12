@@ -10,7 +10,7 @@ using ProyectoSubasta.Repository;
 
 namespace ProyectoSubasta.Migrations
 {
-    [DbContext(typeof(SubastaContext))]
+    [DbContext(typeof(DBcontext))]
     [Migration("20251110192712_InitialCreate")]
     partial class InitialCreate
     {

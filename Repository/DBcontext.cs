@@ -3,7 +3,7 @@ using ProyectoSubasta.Models;
 
 namespace ProyectoSubasta.Repository
 {
-    public class SubastaContext : DbContext
+    public class DBcontext : DbContext
     {
         public DbSet<Subasta> Subastas { get; set; }
         public DbSet<Postor> Postores { get; set; }

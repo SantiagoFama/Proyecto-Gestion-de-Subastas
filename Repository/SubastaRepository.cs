@@ -7,9 +7,9 @@ namespace ProyectoSubasta.Repository
 {
     public class SubastaRepository
     {
-        private readonly SubastaContext _context;
+        private readonly DBcontext _context;
 
-        public SubastaRepository(SubastaContext context)
+        public SubastaRepository(DBcontext context)
         {
             _context = context;
         }

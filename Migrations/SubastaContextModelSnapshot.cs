@@ -9,7 +9,7 @@ using ProyectoSubasta.Repository;
 
 namespace ProyectoSubasta.Migrations
 {
-    [DbContext(typeof(SubastaContext))]
+    [DbContext(typeof(DBcontext))]
     partial class SubastaContextModelSnapshot : ModelSnapshot
     {
         protected override void BuildModel(ModelBuilder modelBuilder)

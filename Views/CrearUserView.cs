@@ -15,7 +15,7 @@ namespace ProyectoSubasta.Views
         public int DniUsuarioLogueado { get; set; }
         public string RolUsuarioLogueado { get; set; }
 
-        public CrearUserView(SubastaContext context)
+        public CrearUserView(DBcontext context)
         {
             InitializeComponent();
 
