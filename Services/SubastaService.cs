@@ -66,10 +66,15 @@ namespace ProyectoSubasta.Services
             return repository.ActualizarSubasta(subasta);
         }
 
-        public bool EgresoPostor(int subastaId, Postor postor)
+        public bool EgresoPostor(int subastaId, int postorId)
         {
             var subasta = repository.ObtenerSubasta(subastaId);
 
+            bool estaIngresado = subasta.Postores.Any(p => p.Dni == postorId);
+            if (!estaIngresado)
+                return false;
+
+            var postor = _context.Postores.Find(postorId);
             subasta.Postores.Remove(postor);
             return repository.ActualizarSubasta(subasta);
         }

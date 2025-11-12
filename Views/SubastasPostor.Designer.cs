@@ -1,6 +1,6 @@
 ﻿namespace ProyectoSubasta.Views
 {
-    partial class SubastaView
+    partial class SubastasPostor
     {
         private System.ComponentModel.IContainer components = null;
         private System.Windows.Forms.DataGridView dgvSubastas;

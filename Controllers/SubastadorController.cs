@@ -25,9 +25,9 @@ namespace ProyectoSubasta.Controllers
             return Service.ObtenerSubastadores();
         }
 
-        public Subastador BuscarSubastador(int dni)
+        public Subastador ObtenerSubastador(int dni)
         {
-            return Service.BuscarSubastador(dni);
+            return Service.ObtenerSubastador(dni);
         }
 
         public bool EliminarSubastador(int dni)

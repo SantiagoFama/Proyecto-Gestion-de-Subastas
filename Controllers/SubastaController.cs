@@ -30,15 +30,14 @@ namespace ProyectoSubasta.Controllers
             return service.FinalizarSubasta(subastaId);
              
         }
-
         public Postor ObtenerGanador(int subastaId)
         {
             return service.ObtenerGanador(subastaId);
         }
 
-        public bool EgresoPostor(int subastaId, Postor postor)
+        public bool EgresoPostor(int subastaId, int postorId)
         {
-            return service.EgresoPostor(subastaId, postor);
+            return service.EgresoPostor(subastaId, postorId);
         }
 
         public bool IngresoPostor(int subastaId, int postorId)

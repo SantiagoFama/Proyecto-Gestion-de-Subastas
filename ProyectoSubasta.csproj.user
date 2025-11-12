@@ -14,7 +14,10 @@
     <Compile Update="Views\MenuView.cs">
       <SubType>Form</SubType>
     </Compile>
-    <Compile Update="Views\SubastaView.cs">
+    <Compile Update="Views\SubastasPostor.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Update="Views\SubastasSubastador.cs">
       <SubType>Form</SubType>
     </Compile>
   </ItemGroup>

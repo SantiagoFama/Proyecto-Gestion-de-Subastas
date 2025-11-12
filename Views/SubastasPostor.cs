@@ -8,12 +8,12 @@ using System.Windows.Forms;
 
 namespace ProyectoSubasta.Views
 {
-    public partial class SubastaView : Form
+    public partial class SubastasPostor : Form
     {
         private readonly SubastaController controller;
         private readonly int postorId;
 
-        public SubastaView(SubastaContext context,int PostorId)
+        public SubastasPostor(SubastaContext context,int PostorId)
         {
             InitializeComponent();
             controller = new SubastaController(context);
@@ -28,7 +28,6 @@ namespace ProyectoSubasta.Views
             dgvSubastas.DataSource = lista;
             PersonalizarGrid();
         }
-
 
         private void PersonalizarGrid()
         {
@@ -64,8 +63,19 @@ namespace ProyectoSubasta.Views
         }
 
         private void btnSalirSubasta_Click(object sender, EventArgs e)
-        {
+        {   
+            if (dgvSubastas.CurrentRow == null)
+            {
+                MessageBox.Show("Por favor, seleccione una subasta de la grilla para salir.");
+                return;
+            }
 
+            var fila = dgvSubastas.CurrentRow;
+            int id = (int)fila.Cells["id"].Value;
+
+            bool ok = controller.EgresoPostor(id, postorId);
+            if (ok) MessageBox.Show("Saliste Correctamente de la Subasta.");
+            CargarSubastasGrid();
         }
     }
 }

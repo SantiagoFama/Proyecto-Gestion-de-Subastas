@@ -30,7 +30,7 @@ namespace ProyectoSubasta.Services
             return repository.ObtenerTodos();
         }
 
-        public Subastador BuscarSubastador(int dni)
+        public Subastador ObtenerSubastador(int dni)
         {
             return repository.ObtenerPorId(dni);
         }

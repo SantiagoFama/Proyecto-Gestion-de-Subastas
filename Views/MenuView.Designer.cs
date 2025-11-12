@@ -72,6 +72,7 @@
             btnMisSubastasSubastador.TabIndex = 4;
             btnMisSubastasSubastador.Text = "Mis Subastas";
             btnMisSubastasSubastador.UseVisualStyleBackColor = true;
+            btnMisSubastasSubastador.Click += btnMisSubastasSubastador_Click;
             // 
             // MenuView
             // 

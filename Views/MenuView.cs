@@ -44,12 +44,17 @@ namespace ProyectoSubasta.Views
 
         private void btnMisSubastasPostor_Click(object sender, EventArgs e)
         {
-            CargarVista(new SubastaView(context, dniUsuario));
+            CargarVista(new SubastasPostor(context, dniUsuario));
         }
 
         private void btnCrearSubasta_Click(object sender, EventArgs e)
         {
             CargarVista(crearSubastaView);
+        }
+
+        private void btnMisSubastasSubastador_Click(object sender, EventArgs e)
+        {
+            CargarVista(new SubastasSubastador(context, dniUsuario));
         }
 
         private void MenuView_Load(object sender, EventArgs e)
@@ -69,10 +74,7 @@ namespace ProyectoSubasta.Views
                 btnVerSubastas.Visible = false;
                 btnMisSubastasPostor.Visible = false;
             }
-
             return;
         }
-
-        
     }
 }
