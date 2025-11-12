@@ -1,14 +1,10 @@
 ﻿using System;
 using System.Collections.Generic;
-using System.ComponentModel;
-using System.Data;
 using ProyectoSubasta.Controllers;
 using ProyectoSubasta.Models;
 using ProyectoSubasta.Repository;
-using System;
-using System.Collections.Generic;
-using System.ComponentModel;
 using System.Windows.Forms;
+
 
 namespace ProyectoSubasta.Views
 {

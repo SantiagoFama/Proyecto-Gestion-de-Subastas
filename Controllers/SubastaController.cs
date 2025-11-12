@@ -20,15 +20,15 @@ namespace ProyectoSubasta.Controllers
             return service.CrearSubasta(new Subasta(articulo, subastador, precioInicial, precioPuja, fecha, horarioInicio, duracion));
         }
 
-        public bool Pujar(int subastaId, Postor postor)
+        public bool Pujar(int subastaId, int postorId)
         {
-            return service.Pujar(subastaId, postor);
+            return service.Pujar(subastaId, postorId);
         }
 
         public bool FinalizarSubasta(int subastaId)
         {
             return service.FinalizarSubasta(subastaId);
-             
+
         }
         public Postor ObtenerGanador(int subastaId)
         {
@@ -41,7 +41,7 @@ namespace ProyectoSubasta.Controllers
         }
 
         public bool IngresoPostor(int subastaId, int postorId)
-        { 
+        {
             return service.IngresoPostor(subastaId, postorId);
         }
 
@@ -63,7 +63,7 @@ namespace ProyectoSubasta.Controllers
         public List<Subasta> ListaSubastasPorPostor(int dni)
         {
             return service.ListaSubastasPorPostor(dni);
-        }
+        } 
     }
 }
 
