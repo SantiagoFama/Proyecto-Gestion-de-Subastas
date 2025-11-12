@@ -10,14 +10,12 @@ namespace ProyectoSubasta.Views
     public partial class ListaSubastasView : Form
     {
         private readonly SubastaController subastacontroller;
-        private readonly PostorController postorController;
         private readonly int postorId;  
 
         public ListaSubastasView(SubastaContext context, int PostorId)
         {
             InitializeComponent();
             subastacontroller = new SubastaController(context);
-            postorController = new PostorController(context);
             postorId = PostorId;
         }
 
@@ -33,6 +31,7 @@ namespace ProyectoSubasta.Views
 
         private void PersonalizarGrid()
         {
+            dgvSubastas.RowHeadersVisible = false;
             dgvSubastas.Columns["id"].Visible = false;
             dgvSubastas.Columns["Fecha"].Visible = false;
             dgvSubastas.Columns["HorarioInicio"].Visible = false;
@@ -40,7 +39,6 @@ namespace ProyectoSubasta.Views
             dgvSubastas.Columns["Ganador"].Visible = false;
             dgvSubastas.Columns["Finalizada"].Visible = false;
             dgvSubastas.Columns["Pujas"].Visible = false;
-            dgvSubastas.RowHeadersVisible = false;
 
             dgvSubastas.Columns["PrecioInicial"].HeaderText = "Precio Inicial";
             dgvSubastas.Columns["PrecioPuja"].HeaderText = "Puja Actual";

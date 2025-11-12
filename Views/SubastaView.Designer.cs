@@ -44,7 +44,7 @@
             btnVerDetalle.TabIndex = 1;
             btnVerDetalle.Text = "Ver Detalle";
             btnVerDetalle.UseVisualStyleBackColor = true;
-            btnVerDetalle.Click += this.btnIngresarPostor;
+            btnVerDetalle.Click += btnVerDetalle_Click;
             // 
             // btnSalirSubasta
             // 
@@ -60,10 +60,10 @@
             // 
             AutoScaleDimensions = new System.Drawing.SizeF(8F, 20F);
             AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            ClientSize = new System.Drawing.Size(961, 546);
+            ClientSize = new System.Drawing.Size(961, 569);
             Controls.Add(dgvSubastas);
             Controls.Add(btnSalirSubasta);
-            Controls.Add(this.btnVerDetalle);
+            Controls.Add(btnVerDetalle);
             Name = "SubastaView";
             Text = "SubastaView";
             ((System.ComponentModel.ISupportInitialize)dgvSubastas).EndInit();

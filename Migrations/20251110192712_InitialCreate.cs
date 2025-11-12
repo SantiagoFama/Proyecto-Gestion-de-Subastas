@@ -12,96 +12,111 @@ namespace ProyectoSubasta.Migrations
         protected override void Up(MigrationBuilder migrationBuilder)
         {
             migrationBuilder.CreateTable(
-                name: "Subastadores",
+                name: "Postores",
                 columns: table => new
                 {
-                    dni = table.Column<int>(type: "INTEGER", nullable: false)
+                    Dni = table.Column<int>(type: "INTEGER", nullable: false)
                         .Annotation("Sqlite:Autoincrement", true),
                     Nombre = table.Column<string>(type: "TEXT", nullable: false),
                     Apellido = table.Column<string>(type: "TEXT", nullable: false)
                 },
                 constraints: table =>
                 {
-                    table.PrimaryKey("PK_Subastadores", x => x.dni);
+                    table.PrimaryKey("PK_Postores", x => x.Dni);
                 });
 
             migrationBuilder.CreateTable(
-                name: "Postores",
+                name: "Subastadores",
                 columns: table => new
                 {
-                    dni = table.Column<int>(type: "INTEGER", nullable: false)
+                    Dni = table.Column<int>(type: "INTEGER", nullable: false)
                         .Annotation("Sqlite:Autoincrement", true),
                     Nombre = table.Column<string>(type: "TEXT", nullable: false),
-                    Apellido = table.Column<string>(type: "TEXT", nullable: false),
-                    Subastaid = table.Column<int>(type: "INTEGER", nullable: true)
+                    Apellido = table.Column<string>(type: "TEXT", nullable: false)
                 },
                 constraints: table =>
                 {
-                    table.PrimaryKey("PK_Postores", x => x.dni);
+                    table.PrimaryKey("PK_Subastadores", x => x.Dni);
                 });
 
             migrationBuilder.CreateTable(
                 name: "Subastas",
                 columns: table => new
                 {
-                    id = table.Column<int>(type: "INTEGER", nullable: false)
+                    Id = table.Column<int>(type: "INTEGER", nullable: false)
                         .Annotation("Sqlite:Autoincrement", true),
                     PrecioInicial = table.Column<decimal>(type: "TEXT", nullable: false),
                     PrecioPuja = table.Column<decimal>(type: "TEXT", nullable: false),
                     Duracion = table.Column<decimal>(type: "TEXT", nullable: false),
                     Pujas = table.Column<int>(type: "INTEGER", nullable: false),
                     Articulo = table.Column<string>(type: "TEXT", nullable: false),
-                    Subastadordni = table.Column<int>(type: "INTEGER", nullable: false),
+                    SubastadorDni = table.Column<int>(type: "INTEGER", nullable: false),
                     Fecha = table.Column<DateTime>(type: "TEXT", nullable: false),
                     HorarioInicio = table.Column<DateTime>(type: "TEXT", nullable: false),
-                    Ganadordni = table.Column<int>(type: "INTEGER", nullable: true),
+                    GanadorDni = table.Column<int>(type: "INTEGER", nullable: true),
                     Finalizada = table.Column<bool>(type: "INTEGER", nullable: false)
                 },
                 constraints: table =>
                 {
-                    table.PrimaryKey("PK_Subastas", x => x.id);
+                    table.PrimaryKey("PK_Subastas", x => x.Id);
                     table.ForeignKey(
-                        name: "FK_Subastas_Postores_Ganadordni",
-                        column: x => x.Ganadordni,
+                        name: "FK_Subastas_Postores_GanadorDni",
+                        column: x => x.GanadorDni,
                         principalTable: "Postores",
-                        principalColumn: "dni");
+                        principalColumn: "Dni");
                     table.ForeignKey(
-                        name: "FK_Subastas_Subastadores_Subastadordni",
-                        column: x => x.Subastadordni,
+                        name: "FK_Subastas_Subastadores_SubastadorDni",
+                        column: x => x.SubastadorDni,
                         principalTable: "Subastadores",
-                        principalColumn: "dni",
+                        principalColumn: "Dni",
+                        onDelete: ReferentialAction.Cascade);
+                });
+
+            migrationBuilder.CreateTable(
+                name: "PostorSubasta",
+                columns: table => new
+                {
+                    PostoresDni = table.Column<int>(type: "INTEGER", nullable: false),
+                    SubastasId = table.Column<int>(type: "INTEGER", nullable: false)
+                },
+                constraints: table =>
+                {
+                    table.PrimaryKey("PK_PostorSubasta", x => new { x.PostoresDni, x.SubastasId });
+                    table.ForeignKey(
+                        name: "FK_PostorSubasta_Postores_PostoresDni",
+                        column: x => x.PostoresDni,
+                        principalTable: "Postores",
+                        principalColumn: "Dni",
+                        onDelete: ReferentialAction.Cascade);
+                    table.ForeignKey(
+                        name: "FK_PostorSubasta_Subastas_SubastasId",
+                        column: x => x.SubastasId,
+                        principalTable: "Subastas",
+                        principalColumn: "Id",
                         onDelete: ReferentialAction.Cascade);
                 });
 
             migrationBuilder.CreateIndex(
-                name: "IX_Postores_Subastaid",
-                table: "Postores",
-                column: "Subastaid");
+                name: "IX_PostorSubasta_SubastasId",
+                table: "PostorSubasta",
+                column: "SubastasId");
 
             migrationBuilder.CreateIndex(
-                name: "IX_Subastas_Ganadordni",
+                name: "IX_Subastas_GanadorDni",
                 table: "Subastas",
-                column: "Ganadordni");
+                column: "GanadorDni");
 
             migrationBuilder.CreateIndex(
-                name: "IX_Subastas_Subastadordni",
+                name: "IX_Subastas_SubastadorDni",
                 table: "Subastas",
-                column: "Subastadordni");
-
-            migrationBuilder.AddForeignKey(
-                name: "FK_Postores_Subastas_Subastaid",
-                table: "Postores",
-                column: "Subastaid",
-                principalTable: "Subastas",
-                principalColumn: "id");
+                column: "SubastadorDni");
         }
 
         /// <inheritdoc />
         protected override void Down(MigrationBuilder migrationBuilder)
         {
-            migrationBuilder.DropForeignKey(
-                name: "FK_Postores_Subastas_Subastaid",
-                table: "Postores");
+            migrationBuilder.DropTable(
+                name: "PostorSubasta");
 
             migrationBuilder.DropTable(
                 name: "Subastas");

@@ -17,6 +17,21 @@ namespace ProyectoSubasta.Migrations
 #pragma warning disable 612, 618
             modelBuilder.HasAnnotation("ProductVersion", "9.0.10");
 
+            modelBuilder.Entity("PostorSubasta", b =>
+                {
+                    b.Property<int>("PostoresDni")
+                        .HasColumnType("INTEGER");
+
+                    b.Property<int>("SubastasId")
+                        .HasColumnType("INTEGER");
+
+                    b.HasKey("PostoresDni", "SubastasId");
+
+                    b.HasIndex("SubastasId");
+
+                    b.ToTable("PostorSubasta");
+                });
+
             modelBuilder.Entity("ProyectoSubasta.Models.Postor", b =>
                 {
                     b.Property<int>("Dni")
@@ -101,6 +116,21 @@ namespace ProyectoSubasta.Migrations
                     b.ToTable("Subastadores");
                 });
 
+            modelBuilder.Entity("PostorSubasta", b =>
+                {
+                    b.HasOne("ProyectoSubasta.Models.Postor", null)
+                        .WithMany()
+                        .HasForeignKey("PostoresDni")
+                        .OnDelete(DeleteBehavior.Cascade)
+                        .IsRequired();
+
+                    b.HasOne("ProyectoSubasta.Models.Subasta", null)
+                        .WithMany()
+                        .HasForeignKey("SubastasId")
+                        .OnDelete(DeleteBehavior.Cascade)
+                        .IsRequired();
+                });
+
             modelBuilder.Entity("ProyectoSubasta.Models.Subasta", b =>
                 {
                     b.HasOne("ProyectoSubasta.Models.Postor", "Ganador")
@@ -116,11 +146,6 @@ namespace ProyectoSubasta.Migrations
                     b.Navigation("Ganador");
 
                     b.Navigation("Subastador");
-                });
-
-            modelBuilder.Entity("ProyectoSubasta.Models.Subasta", b =>
-                {
-                    b.Navigation("Postores");
                 });
 #pragma warning restore 612, 618
         }

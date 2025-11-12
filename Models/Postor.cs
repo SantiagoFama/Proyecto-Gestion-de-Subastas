@@ -39,8 +39,7 @@ namespace ProyectoSubasta.Models
             get => _nombre;
             set
             {
-                if (string.IsNullOrWhiteSpace(value))
-                    throw new ArgumentException("El nombre no puede estar vacío.");
+                if (string.IsNullOrWhiteSpace(value)) throw new ArgumentException("El nombre no puede estar vacío.");
                 _nombre = value;
             }
         }
@@ -50,8 +49,7 @@ namespace ProyectoSubasta.Models
             get => _apellido;
             set
             {
-                if (string.IsNullOrWhiteSpace(value))
-                    throw new ArgumentException("El apellido no puede estar vacío.");
+                if (string.IsNullOrWhiteSpace(value)) throw new ArgumentException("El apellido no puede estar vacío.");
                 _apellido = value;
             }
         }

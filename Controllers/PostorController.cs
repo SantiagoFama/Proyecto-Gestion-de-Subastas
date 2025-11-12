@@ -34,6 +34,12 @@ namespace ProyectoSubasta.Controllers
         {
             return Service.EliminarPostor(dni);
         }
+        public List<Subasta> ListaSubastas()
+        {
+            // Implementación para obtener la lista de subastas disponibles para el postor
+            // Esto puede implicar llamar a otro servicio o repositorio según la lógica de negocio
+            return new List<Subasta>(); // Retorna una lista vacía como marcador de posición
+        }
     }
 }
 

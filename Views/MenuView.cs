@@ -6,7 +6,6 @@ namespace ProyectoSubasta.Views
 {
     public partial class MenuView : Form
     {
-        private ListaSubastasView listaSubastasView;
         private CrearUserView crearuserView;
         private CrearSubasta crearSubastaView;
         private readonly SubastaContext context;

@@ -11,7 +11,7 @@ using ProyectoSubasta.Repository;
 namespace ProyectoSubasta.Migrations
 {
     [DbContext(typeof(SubastaContext))]
-    [Migration("20251101194904_Initial-Create")]
+    [Migration("20251110192712_InitialCreate")]
     partial class InitialCreate
     {
         /// <inheritdoc />
@@ -20,9 +20,24 @@ namespace ProyectoSubasta.Migrations
 #pragma warning disable 612, 618
             modelBuilder.HasAnnotation("ProductVersion", "9.0.10");
 
+            modelBuilder.Entity("PostorSubasta", b =>
+                {
+                    b.Property<int>("PostoresDni")
+                        .HasColumnType("INTEGER");
+
+                    b.Property<int>("SubastasId")
+                        .HasColumnType("INTEGER");
+
+                    b.HasKey("PostoresDni", "SubastasId");
+
+                    b.HasIndex("SubastasId");
+
+                    b.ToTable("PostorSubasta");
+                });
+
             modelBuilder.Entity("ProyectoSubasta.Models.Postor", b =>
                 {
-                    b.Property<int>("dni")
+                    b.Property<int>("Dni")
                         .ValueGeneratedOnAdd()
                         .HasColumnType("INTEGER");
 
@@ -34,19 +49,14 @@ namespace ProyectoSubasta.Migrations
                         .IsRequired()
                         .HasColumnType("TEXT");
 
-                    b.Property<int?>("Subastaid")
-                        .HasColumnType("INTEGER");
-
-                    b.HasKey("dni");
-
-                    b.HasIndex("Subastaid");
+                    b.HasKey("Dni");
 
                     b.ToTable("Postores");
                 });
 
             modelBuilder.Entity("ProyectoSubasta.Models.Subasta", b =>
                 {
-                    b.Property<int>("id")
+                    b.Property<int>("Id")
                         .ValueGeneratedOnAdd()
                         .HasColumnType("INTEGER");
 
@@ -63,7 +73,7 @@ namespace ProyectoSubasta.Migrations
                     b.Property<bool>("Finalizada")
                         .HasColumnType("INTEGER");
 
-                    b.Property<int?>("Ganadordni")
+                    b.Property<int?>("GanadorDni")
                         .HasColumnType("INTEGER");
 
                     b.Property<DateTime>("HorarioInicio")
@@ -78,21 +88,21 @@ namespace ProyectoSubasta.Migrations
                     b.Property<int>("Pujas")
                         .HasColumnType("INTEGER");
 
-                    b.Property<int>("Subastadordni")
+                    b.Property<int>("SubastadorDni")
                         .HasColumnType("INTEGER");
 
-                    b.HasKey("id");
+                    b.HasKey("Id");
 
-                    b.HasIndex("Ganadordni");
+                    b.HasIndex("GanadorDni");
 
-                    b.HasIndex("Subastadordni");
+                    b.HasIndex("SubastadorDni");
 
                     b.ToTable("Subastas");
                 });
 
             modelBuilder.Entity("ProyectoSubasta.Models.Subastador", b =>
                 {
-                    b.Property<int>("dni")
+                    b.Property<int>("Dni")
                         .ValueGeneratedOnAdd()
                         .HasColumnType("INTEGER");
 
@@ -104,38 +114,41 @@ namespace ProyectoSubasta.Migrations
                         .IsRequired()
                         .HasColumnType("TEXT");
 
-                    b.HasKey("dni");
+                    b.HasKey("Dni");
 
                     b.ToTable("Subastadores");
                 });
 
-            modelBuilder.Entity("ProyectoSubasta.Models.Postor", b =>
+            modelBuilder.Entity("PostorSubasta", b =>
                 {
+                    b.HasOne("ProyectoSubasta.Models.Postor", null)
+                        .WithMany()
+                        .HasForeignKey("PostoresDni")
+                        .OnDelete(DeleteBehavior.Cascade)
+                        .IsRequired();
+
                     b.HasOne("ProyectoSubasta.Models.Subasta", null)
-                        .WithMany("Postores")
-                        .HasForeignKey("Subastaid");
+                        .WithMany()
+                        .HasForeignKey("SubastasId")
+                        .OnDelete(DeleteBehavior.Cascade)
+                        .IsRequired();
                 });
 
             modelBuilder.Entity("ProyectoSubasta.Models.Subasta", b =>
                 {
                     b.HasOne("ProyectoSubasta.Models.Postor", "Ganador")
                         .WithMany()
-                        .HasForeignKey("Ganadordni");
+                        .HasForeignKey("GanadorDni");
 
                     b.HasOne("ProyectoSubasta.Models.Subastador", "Subastador")
                         .WithMany()
-                        .HasForeignKey("Subastadordni")
+                        .HasForeignKey("SubastadorDni")
                         .OnDelete(DeleteBehavior.Cascade)
                         .IsRequired();
 
                     b.Navigation("Ganador");
 
                     b.Navigation("Subastador");
-                });
-
-            modelBuilder.Entity("ProyectoSubasta.Models.Subasta", b =>
-                {
-                    b.Navigation("Postores");
                 });
 #pragma warning restore 612, 618
         }

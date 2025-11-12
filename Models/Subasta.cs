@@ -73,20 +73,7 @@ namespace ProyectoSubasta.Models
             get => _pujas;
             set => _pujas = value;
         }
-        public string Estado
-        {
-            get
-            {
-                if (Finalizada == false)
-                {
-                    return "Abierta";
-                }
-                else
-                {
-                    return "Cerrada";
-                }
-            }
-        }
+
         public int Id
         {
             get => _id;
@@ -113,12 +100,7 @@ namespace ProyectoSubasta.Models
         public DateTime Fecha
         {
             get => _fecha;
-            set
-            {
-                if (value.Date < DateTime.Today)
-                    throw new ArgumentException("La fecha de la subasta no puede ser anterior a hoy.");
-                _fecha = value;
-            }
+            set => _fecha = value;
         }
 
         public DateTime HorarioInicio
@@ -143,6 +125,34 @@ namespace ProyectoSubasta.Models
         {
             get => _finalizada;
             set => _finalizada = value;
+        }
+        public string Estado
+        {
+            get
+            {
+                if (Finalizada == false)
+                {
+                    return "Abierta";
+                }
+                else
+                {
+                    return "Cerrada";
+                }
+            }
+        }
+        public decimal PrecioActual
+        {
+            get
+            {
+                if (Pujas > 0)
+                {
+                    return ((PrecioPuja * Pujas) + PrecioInicial);
+                }
+                else
+                {
+                    return PrecioInicial;
+                }
+            }
         }
     }
 }

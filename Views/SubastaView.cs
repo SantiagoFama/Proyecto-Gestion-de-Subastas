@@ -16,7 +16,6 @@ namespace ProyectoSubasta.Views
         public SubastaView(SubastaContext context,int PostorId)
         {
             InitializeComponent();
-
             controller = new SubastaController(context);
             postorId = PostorId;
             CargarSubastasGrid();
@@ -42,9 +41,6 @@ namespace ProyectoSubasta.Views
             dgvSubastas.Columns["Pujas"].Visible = false;
             dgvSubastas.RowHeadersVisible = false;
 
-            dgvSubastas.Columns["PrecioInicial"].HeaderText = "Precio Inicial";
-            dgvSubastas.Columns["PrecioPuja"].HeaderText = "Puja Actual";
-
             dgvSubastas.Columns["PrecioInicial"].DefaultCellStyle.Format = "C";
             dgvSubastas.Columns["PrecioPuja"].DefaultCellStyle.Format = "C";
 
@@ -53,11 +49,16 @@ namespace ProyectoSubasta.Views
             dgvSubastas.Columns["PrecioPuja"].DisplayIndex = 2;
             dgvSubastas.Columns["PrecioInicial"].DisplayIndex = 3;
             dgvSubastas.Columns["Subastador"].DisplayIndex = 4;
+            dgvSubastas.Columns["PrecioActual"].DisplayIndex = 5;
+
+            dgvSubastas.Columns["PrecioInicial"].HeaderText = "Precio Inicial";
+            dgvSubastas.Columns["PrecioPuja"].HeaderText = "Precio Puja";
+            dgvSubastas.Columns["PrecioActual"].HeaderText = "Precio Actual";
 
             dgvSubastas.AutoSizeColumnsMode = DataGridViewAutoSizeColumnsMode.Fill;
         }
 
-        private void btnIngresarPostor(object sender, EventArgs e)
+        private void btnVerDetalle_Click(object sender, EventArgs e)
         {
 
         }

@@ -53,43 +53,16 @@ namespace ProyectoSubasta.Services
             return subasta.Ganador;
         }
 
-        public bool IngresoPostor2(int subastaId, int postorId)
-        {
-            var subasta = repository.ObtenerSubasta(subastaId);
-
-            var existe = subasta.Postores.Any(p => p.Dni == postorId);
-            if (!existe)
-            {
-                
-                //subasta.Postores.Add();
-                return repository.ActualizarSubasta(subasta);
-            }
-            return false;
-        }
         public bool IngresoPostor(int subastaId, int postorId)
         {
             var subasta = repository.ObtenerSubasta(subastaId);
 
-            bool yaEstaUnido = subasta.Postores.Any(p => p.Dni == postorId);
-            if (yaEstaUnido)
-            {
+            bool estaIngresado = subasta.Postores.Any(p => p.Dni == postorId);
+            if (estaIngresado)
                 return false;
-            }
 
-            // --- AQUÍ ESTÁ LA RESPUESTA ---
-            // No "creas" un postor, lo "buscas" en la base de datos
-            // usando el ID que recibiste.
-            var postorAAgregar = _context.Postores.Find(postorId);
-            // --- --- --- --- --- --- --- ---
-
-            // Si el postor no existe en la BD, no puedes agregarlo
-            if (postorAAgregar == null)
-            {
-                return false;
-            }
-
-            // 5. Ahora sí, unes los dos objetos y guardas
-            subasta.Postores.Add(postorAAgregar);
+            var postor = _context.Postores.Find(postorId);
+            subasta.Postores.Add(postor);
             return repository.ActualizarSubasta(subasta);
         }
 
@@ -104,10 +77,10 @@ namespace ProyectoSubasta.Services
         public bool EliminarSubasta(int subastaId)
         {
             var subasta = repository.ObtenerSubasta(subastaId);
+            
             if (subasta == null)
-            {
                 return false;
-            }
+
             return repository.EliminarSubasta(subastaId);
         }
         public List<Subasta> ListaSubastas()

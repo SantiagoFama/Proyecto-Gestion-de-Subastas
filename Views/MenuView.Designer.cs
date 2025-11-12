@@ -31,7 +31,7 @@
             // 
             panel_contenedor.Location = new System.Drawing.Point(6, 87);
             panel_contenedor.Name = "panel_contenedor";
-            panel_contenedor.Size = new System.Drawing.Size(1193, 487);
+            panel_contenedor.Size = new System.Drawing.Size(1193, 549);
             panel_contenedor.TabIndex = 0;
             // 
             // btnVerSubastas
@@ -77,7 +77,7 @@
             // 
             AutoScaleDimensions = new System.Drawing.SizeF(8F, 20F);
             AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            ClientSize = new System.Drawing.Size(1211, 586);
+            ClientSize = new System.Drawing.Size(1211, 634);
             Controls.Add(btnMisSubastasSubastador);
             Controls.Add(btnCrearSubasta);
             Controls.Add(btnVerSubastas);
