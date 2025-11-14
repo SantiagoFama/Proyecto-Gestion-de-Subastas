@@ -32,7 +32,7 @@ namespace ProyectoSubasta.Views
         private void PersonalizarGrid()
         {
             dgvSubastas.RowHeadersVisible = false;
-            dgvSubastas.Columns["id"].Visible = false;
+            dgvSubastas.Columns["Id"].Visible = false;
             dgvSubastas.Columns["Fecha"].Visible = false;
             dgvSubastas.Columns["HorarioInicio"].Visible = false;
             dgvSubastas.Columns["Duracion"].Visible = false;
@@ -65,9 +65,9 @@ namespace ProyectoSubasta.Views
             }
 
             var fila = dgvSubastas.CurrentRow;
-            int id = (int)fila.Cells["id"].Value;
+            int subastaId = (int)fila.Cells["Id"].Value;
 
-            bool ok = subastaController.IngresoPostor(id, postorId);
+            bool ok = subastaController.IngresoPostor(subastaId, postorId);
             if (ok) MessageBox.Show("Ingresaste Correctamente. Para interactuar ve a 'Mis Subastas'.");
             else MessageBox.Show("Ya ingresaste en esta subasta.");
         }

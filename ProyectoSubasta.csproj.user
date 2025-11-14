@@ -20,5 +20,8 @@
     <Compile Update="Views\SubastasSubastador.cs">
       <SubType>Form</SubType>
     </Compile>
+    <Compile Update="Views\VerDetalle.cs">
+      <SubType>Form</SubType>
+    </Compile>
   </ItemGroup>
 </Project>
