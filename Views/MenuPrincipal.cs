@@ -31,7 +31,7 @@ namespace ProyectoSubasta.Views
 
         private void InicializarTimerDeSubastas()
         {
-            subastaTimer = new System.Timers.Timer(30000); // 30 segundos
+            subastaTimer = new System.Timers.Timer(10000); // 30 segundos
             subastaTimer.Elapsed += VerificarSubastas;
             subastaTimer.AutoReset = true; // Se reinicia solo
             subastaTimer.Enabled = true;   // Inicia el timer

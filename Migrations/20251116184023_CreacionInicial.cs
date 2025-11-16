@@ -6,7 +6,7 @@ using Microsoft.EntityFrameworkCore.Migrations;
 namespace ProyectoSubasta.Migrations
 {
     /// <inheritdoc />
-    public partial class Inicial : Migration
+    public partial class CreacionInicial : Migration
     {
         /// <inheritdoc />
         protected override void Up(MigrationBuilder migrationBuilder)

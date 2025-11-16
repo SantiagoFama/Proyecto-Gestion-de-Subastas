@@ -11,8 +11,8 @@ using ProyectoSubasta.Repository;
 namespace ProyectoSubasta.Migrations
 {
     [DbContext(typeof(DBcontext))]
-    [Migration("20251116181253_Inicial")]
-    partial class Inicial
+    [Migration("20251116184023_CreacionInicial")]
+    partial class CreacionInicial
     {
         /// <inheritdoc />
         protected override void BuildTargetModel(ModelBuilder modelBuilder)

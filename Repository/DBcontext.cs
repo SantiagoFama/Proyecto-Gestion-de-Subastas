@@ -1,5 +1,7 @@
 ﻿using Microsoft.EntityFrameworkCore;
-using ProyectoSubasta.Models; 
+using ProyectoSubasta.Models;
+using System;     
+using System.IO;  
 
 namespace ProyectoSubasta.Repository
 {
@@ -10,13 +12,21 @@ namespace ProyectoSubasta.Repository
         public DbSet<Subastador> Subastadores { get; set; }
 
         protected override void OnConfiguring(DbContextOptionsBuilder options)
-            => options.UseSqlite("Data Source=subastas.db");
+        {
+            var folder = Environment.SpecialFolder.LocalApplicationData;
+            var path = Environment.GetFolderPath(folder);
+
+            var dbPath = Path.Combine(path, "subastas_proyecto.db");
+
+            options.UseSqlite($"Data Source={dbPath}");
+        }
+
         protected override void OnModelCreating(ModelBuilder modelBuilder)
         {
             base.OnModelCreating(modelBuilder);
 
-            modelBuilder.Entity<Subasta>().HasMany(s => s.Postores).WithMany(p => p.Subastas); 
-            modelBuilder.Entity<Subasta>().HasOne(s => s.Ganador).WithMany().HasForeignKey("GanadorDni").IsRequired(false); 
+            modelBuilder.Entity<Subasta>().HasMany(s => s.Postores).WithMany(p => p.Subastas);
+            modelBuilder.Entity<Subasta>().HasOne(s => s.Ganador).WithMany().HasForeignKey("GanadorDni").IsRequired(false);
         }
     }
 }

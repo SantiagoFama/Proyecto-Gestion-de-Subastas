@@ -12,7 +12,6 @@ namespace ProyectoSubasta
         {
             Application.EnableVisualStyles();
             Application.SetCompatibleTextRenderingDefault(false);
-            //SubastaContext db_context = new SubastaContext();
             Application.Run(new MenuPrincipal());
         }
     }
