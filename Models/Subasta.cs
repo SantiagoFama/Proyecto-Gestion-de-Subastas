@@ -1,6 +1,5 @@
 ﻿using System;
 using System.Collections.Generic;
-using System.Security.Cryptography;
 
 namespace ProyectoSubasta.Models
 {
@@ -17,7 +16,6 @@ namespace ProyectoSubasta.Models
         private int _pujas;
         private Postor? _ganador;
         private List<Postor> _postores;
-        private bool _finalizada;
 
         public Subasta(string articulo, Subastador subastador, decimal precioInicial, decimal precioPuja, DateTime fecha, DateTime horarioInicio, decimal duracion)
         {
@@ -25,12 +23,13 @@ namespace ProyectoSubasta.Models
             Subastador = subastador;
             PrecioInicial = precioInicial;
             PrecioPuja = precioPuja;
-            Fecha = fecha;
-            HorarioInicio = horarioInicio;
+            HorarioInicio = fecha.Date + horarioInicio.TimeOfDay;
+            Fecha = fecha.Date;
             Duracion = duracion;
             Postores = new List<Postor>();
-            Finalizada = false;
+
             Pujas = 0;
+            Estado = "Programada";
         }
         public Subasta()
         {
@@ -121,26 +120,15 @@ namespace ProyectoSubasta.Models
             set => _postores = value;
         }
 
-        public bool Finalizada
+
+
+        public string Estado { get; set; }
+
+        public DateTime FechaFin
         {
-            get => _finalizada;
-            set => _finalizada = value;
+            get => HorarioInicio.AddMinutes((double)Duracion);
         }
 
-        public string Estado
-        {
-            get
-            {
-                if (Finalizada == false)
-                {
-                    return "Abierta";
-                }
-                else
-                {
-                    return "Cerrada";
-                }
-            }
-        }
         public decimal PrecioActual
         {
             get

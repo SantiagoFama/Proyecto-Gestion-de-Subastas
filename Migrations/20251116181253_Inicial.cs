@@ -6,7 +6,7 @@ using Microsoft.EntityFrameworkCore.Migrations;
 namespace ProyectoSubasta.Migrations
 {
     /// <inheritdoc />
-    public partial class InitialCreate : Migration
+    public partial class Inicial : Migration
     {
         /// <inheritdoc />
         protected override void Up(MigrationBuilder migrationBuilder)
@@ -54,7 +54,7 @@ namespace ProyectoSubasta.Migrations
                     Fecha = table.Column<DateTime>(type: "TEXT", nullable: false),
                     HorarioInicio = table.Column<DateTime>(type: "TEXT", nullable: false),
                     GanadorDni = table.Column<int>(type: "INTEGER", nullable: true),
-                    Finalizada = table.Column<bool>(type: "INTEGER", nullable: false)
+                    Estado = table.Column<string>(type: "TEXT", nullable: false)
                 },
                 constraints: table =>
                 {

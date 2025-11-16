@@ -37,10 +37,10 @@ namespace ProyectoSubasta.Views
 
             
 
-            if (subasta.Finalizada)
+            if (subasta.Estado == "Abierta")
             {
-                btnPujar.Enabled = false;
-                btnPujar.Text = "Subasta Finalizada";
+                //btnPujar.Enabled = false;
+                //btnPujar.Text = "Subasta Finalizada";
             }
         }
 

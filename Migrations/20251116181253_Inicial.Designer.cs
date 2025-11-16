@@ -11,8 +11,8 @@ using ProyectoSubasta.Repository;
 namespace ProyectoSubasta.Migrations
 {
     [DbContext(typeof(DBcontext))]
-    [Migration("20251110192712_InitialCreate")]
-    partial class InitialCreate
+    [Migration("20251116181253_Inicial")]
+    partial class Inicial
     {
         /// <inheritdoc />
         protected override void BuildTargetModel(ModelBuilder modelBuilder)
@@ -67,11 +67,12 @@ namespace ProyectoSubasta.Migrations
                     b.Property<decimal>("Duracion")
                         .HasColumnType("TEXT");
 
-                    b.Property<DateTime>("Fecha")
+                    b.Property<string>("Estado")
+                        .IsRequired()
                         .HasColumnType("TEXT");
 
-                    b.Property<bool>("Finalizada")
-                        .HasColumnType("INTEGER");
+                    b.Property<DateTime>("Fecha")
+                        .HasColumnType("TEXT");
 
                     b.Property<int?>("GanadorDni")
                         .HasColumnType("INTEGER");

@@ -32,9 +32,11 @@ namespace ProyectoSubasta.Services
             if (subasta == null)
                 return false;
 
-            if (subasta.Finalizada)
-                return false;
-            
+            if (subasta.Estado == "Cerrada")
+            {
+                return false; // No puedes ingresar a una subasta cerrada
+            }
+
             Postor postor = repository.ObtenerPostor(postorId);
             subasta.Ganador = postor;
             return repository.ActualizarSubasta(subasta);
@@ -47,10 +49,12 @@ namespace ProyectoSubasta.Services
             if (subasta == null)
                 return false;
 
-            if (subasta.Finalizada)
-                return false;
+            if (subasta.Estado == "Cerrada" || subasta.Estado == "Programada")
+            {
+                return false; 
+            }
 
-            subasta.Finalizada = true;
+            subasta.Estado = "Cerrada";
             return repository.ActualizarSubasta(subasta);
         }
 

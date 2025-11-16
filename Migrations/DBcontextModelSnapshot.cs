@@ -10,7 +10,7 @@ using ProyectoSubasta.Repository;
 namespace ProyectoSubasta.Migrations
 {
     [DbContext(typeof(DBcontext))]
-    partial class SubastaContextModelSnapshot : ModelSnapshot
+    partial class DBcontextModelSnapshot : ModelSnapshot
     {
         protected override void BuildModel(ModelBuilder modelBuilder)
         {
@@ -64,11 +64,12 @@ namespace ProyectoSubasta.Migrations
                     b.Property<decimal>("Duracion")
                         .HasColumnType("TEXT");
 
-                    b.Property<DateTime>("Fecha")
+                    b.Property<string>("Estado")
+                        .IsRequired()
                         .HasColumnType("TEXT");
 
-                    b.Property<bool>("Finalizada")
-                        .HasColumnType("INTEGER");
+                    b.Property<DateTime>("Fecha")
+                        .HasColumnType("TEXT");
 
                     b.Property<int?>("GanadorDni")
                         .HasColumnType("INTEGER");
