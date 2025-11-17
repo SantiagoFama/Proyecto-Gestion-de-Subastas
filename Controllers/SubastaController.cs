@@ -1,5 +1,4 @@
-﻿using Microsoft.EntityFrameworkCore;
-using ProyectoSubasta.Models;
+﻿using ProyectoSubasta.Models;
 using ProyectoSubasta.Repository;
 using ProyectoSubasta.Services;
 using System;
@@ -29,7 +28,6 @@ namespace ProyectoSubasta.Controllers
         public bool FinalizarSubasta(int subastaId)
         {
             return service.FinalizarSubasta(subastaId);
-
         }
         public Postor ObtenerGanador(int subastaId)
         {
@@ -65,6 +63,7 @@ namespace ProyectoSubasta.Controllers
         {
             return service.ObtenerSubastaCompleta(subastaId);
         }
+
         public List<Subasta> FiltrarSubastasPorPostor(int dni)
         {
             return service.FiltrarSubastasPorPostor(dni);

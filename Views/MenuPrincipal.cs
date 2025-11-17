@@ -112,7 +112,7 @@ namespace ProyectoSubasta.Views
 
             if (rolUsuario == "Postor")
             {
-                //btnCrearSubasta.Visible = false;
+                btnCrearSubasta.Visible = false;
                 btnMisSubastasSubastador.Visible = false;
             }
             else if (rolUsuario == "Subastador")

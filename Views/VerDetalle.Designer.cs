@@ -61,7 +61,7 @@
             // 
             lblArticulo.AutoSize = true;
             lblArticulo.Font = new System.Drawing.Font("Segoe UI", 12F);
-            lblArticulo.Location = new System.Drawing.Point(125, 30);
+            lblArticulo.Location = new System.Drawing.Point(150, 30);
             lblArticulo.Name = "lblArticulo";
             lblArticulo.Size = new System.Drawing.Size(90, 28);
             lblArticulo.TabIndex = 12;
@@ -70,7 +70,7 @@
             // label2
             // 
             label2.AutoSize = true;
-            label2.Location = new System.Drawing.Point(34, 80);
+            label2.Location = new System.Drawing.Point(30, 80);
             label2.Name = "label2";
             label2.Size = new System.Drawing.Size(87, 20);
             label2.TabIndex = 11;
@@ -79,7 +79,7 @@
             // lblSubastador
             // 
             lblSubastador.AutoSize = true;
-            lblSubastador.Location = new System.Drawing.Point(127, 80);
+            lblSubastador.Location = new System.Drawing.Point(150, 80);
             lblSubastador.Name = "lblSubastador";
             lblSubastador.Size = new System.Drawing.Size(92, 20);
             lblSubastador.TabIndex = 10;
@@ -88,7 +88,7 @@
             // label3
             // 
             label3.AutoSize = true;
-            label3.Location = new System.Drawing.Point(34, 120);
+            label3.Location = new System.Drawing.Point(30, 120);
             label3.Name = "label3";
             label3.Size = new System.Drawing.Size(96, 20);
             label3.TabIndex = 9;
@@ -97,7 +97,7 @@
             // lblPrecioInicial
             // 
             lblPrecioInicial.AutoSize = true;
-            lblPrecioInicial.Location = new System.Drawing.Point(136, 120);
+            lblPrecioInicial.Location = new System.Drawing.Point(150, 120);
             lblPrecioInicial.Name = "lblPrecioInicial";
             lblPrecioInicial.Size = new System.Drawing.Size(61, 20);
             lblPrecioInicial.TabIndex = 8;
@@ -107,7 +107,7 @@
             // 
             label4.AutoSize = true;
             label4.Font = new System.Drawing.Font("Segoe UI", 10F, System.Drawing.FontStyle.Bold);
-            label4.Location = new System.Drawing.Point(34, 160);
+            label4.Location = new System.Drawing.Point(30, 160);
             label4.Name = "label4";
             label4.Size = new System.Drawing.Size(120, 23);
             label4.TabIndex = 7;
@@ -117,7 +117,7 @@
             // 
             lblPrecioActual.AutoSize = true;
             lblPrecioActual.Font = new System.Drawing.Font("Segoe UI", 10F, System.Drawing.FontStyle.Bold);
-            lblPrecioActual.Location = new System.Drawing.Point(161, 160);
+            lblPrecioActual.Location = new System.Drawing.Point(150, 160);
             lblPrecioActual.Name = "lblPrecioActual";
             lblPrecioActual.Size = new System.Drawing.Size(72, 23);
             lblPrecioActual.TabIndex = 6;
@@ -126,7 +126,7 @@
             // label5
             // 
             label5.AutoSize = true;
-            label5.Location = new System.Drawing.Point(34, 200);
+            label5.Location = new System.Drawing.Point(30, 200);
             label5.Name = "label5";
             label5.Size = new System.Drawing.Size(114, 20);
             label5.TabIndex = 5;
@@ -144,7 +144,7 @@
             // label6
             // 
             label6.AutoSize = true;
-            label6.Location = new System.Drawing.Point(34, 240);
+            label6.Location = new System.Drawing.Point(30, 240);
             label6.Name = "label6";
             label6.Size = new System.Drawing.Size(57, 20);
             label6.TabIndex = 3;
@@ -153,7 +153,7 @@
             // lblEstado
             // 
             lblEstado.AutoSize = true;
-            lblEstado.Location = new System.Drawing.Point(97, 240);
+            lblEstado.Location = new System.Drawing.Point(150, 240);
             lblEstado.Name = "lblEstado";
             lblEstado.Size = new System.Drawing.Size(64, 20);
             lblEstado.TabIndex = 2;
@@ -172,7 +172,7 @@
             // 
             // btnCerrar
             // 
-            btnCerrar.Location = new System.Drawing.Point(82, 352);
+            btnCerrar.Location = new System.Drawing.Point(81, 368);
             btnCerrar.Name = "btnCerrar";
             btnCerrar.Size = new System.Drawing.Size(94, 29);
             btnCerrar.TabIndex = 1;
@@ -184,7 +184,7 @@
             // 
             AutoScaleDimensions = new System.Drawing.SizeF(8F, 20F);
             AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            ClientSize = new System.Drawing.Size(342, 447);
+            ClientSize = new System.Drawing.Size(358, 505);
             Controls.Add(btnCerrar);
             Controls.Add(btnPujar);
             Controls.Add(lblEstado);

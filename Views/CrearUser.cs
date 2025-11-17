@@ -3,7 +3,6 @@ using ProyectoSubasta.Repository;
 using System;
 using System.Windows.Forms;
 using System.Linq;
-using System.Collections.Generic;
 
 namespace ProyectoSubasta.Views
 {
@@ -18,7 +17,6 @@ namespace ProyectoSubasta.Views
         public CrearUser(DBcontext context)
         {
             InitializeComponent();
-
             subastadorController = new SubastadorController(context);
             postorController = new PostorController(context);
             LlenarCombobox();

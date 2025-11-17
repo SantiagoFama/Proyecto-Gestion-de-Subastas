@@ -30,6 +30,8 @@
             // 
             // dgvSubastas
             // 
+            dgvSubastas.AllowUserToResizeColumns = false;
+            dgvSubastas.AllowUserToResizeRows = false;
             dgvSubastas.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
             dgvSubastas.Location = new System.Drawing.Point(12, 6);
             dgvSubastas.Name = "dgvSubastas";

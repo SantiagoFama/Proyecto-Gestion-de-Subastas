@@ -28,14 +28,18 @@
         /// </summary>
         private void InitializeComponent()
         {
+            components = new System.ComponentModel.Container();
             dgvSubastas = new System.Windows.Forms.DataGridView();
             btnFinalizar = new System.Windows.Forms.Button();
             btnEliminar = new System.Windows.Forms.Button();
+            timer1 = new System.Windows.Forms.Timer(components);
             ((System.ComponentModel.ISupportInitialize)dgvSubastas).BeginInit();
             SuspendLayout();
             // 
             // dgvSubastas
             // 
+            dgvSubastas.AllowUserToResizeColumns = false;
+            dgvSubastas.AllowUserToResizeRows = false;
             dgvSubastas.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
             dgvSubastas.Location = new System.Drawing.Point(2, 2);
             dgvSubastas.Name = "dgvSubastas";
@@ -64,6 +68,12 @@
             btnEliminar.UseVisualStyleBackColor = true;
             btnEliminar.Click += btnEliminar_Click;
             // 
+            // timer1
+            // 
+            timer1.Enabled = true;
+            timer1.Interval = 3000;
+            timer1.Tick += timer1_Tick;
+            // 
             // SubastasSubastador
             // 
             AutoScaleDimensions = new System.Drawing.SizeF(8F, 20F);
@@ -83,5 +93,6 @@
         private System.Windows.Forms.DataGridView dgvSubastas;
         private System.Windows.Forms.Button btnFinalizar;
         private System.Windows.Forms.Button btnEliminar;
+        private System.Windows.Forms.Timer timer1;
     }
 }

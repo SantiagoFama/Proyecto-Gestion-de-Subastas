@@ -3,7 +3,6 @@ using ProyectoSubasta.Models;
 using ProyectoSubasta.Repository;
 using System;
 using System.Collections.Generic;
-using System.ComponentModel;
 using System.Windows.Forms;
 
 namespace ProyectoSubasta.Views
@@ -43,7 +42,7 @@ namespace ProyectoSubasta.Views
             dgvSubastas.Columns["Pujas"].Visible = false;
             dgvSubastas.Columns["PrecioPuja"].Visible = false;
 
-            // agregar espacio en medio
+            // corregir nombres 
             dgvSubastas.Columns["PrecioInicial"].HeaderText = "Precio Inicial";
             dgvSubastas.Columns["HorarioInicio"].HeaderText = "Fecha Inicio";
             dgvSubastas.Columns["FechaFin"].HeaderText = "Fecha Cierre";
@@ -84,7 +83,10 @@ namespace ProyectoSubasta.Views
             int id = (int)fila.Cells["Id"].Value;
 
             bool ok = controller.EgresoPostor(id, postorId);
-            if (ok) MessageBox.Show("Saliste Correctamente de la Subasta.");
+            if (ok) 
+                MessageBox.Show("Saliste Correctamente de la Subasta.");
+            else 
+                MessageBox.Show("Error al salir de la subasta.");
             CargarSubastasGrid();
         }
 

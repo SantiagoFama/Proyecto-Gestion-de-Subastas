@@ -31,6 +31,8 @@
             // 
             dgvSubastas.AllowUserToAddRows = false;
             dgvSubastas.AllowUserToDeleteRows = false;
+            dgvSubastas.AllowUserToResizeColumns = false;
+            dgvSubastas.AllowUserToResizeRows = false;
             dgvSubastas.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
             dgvSubastas.Location = new System.Drawing.Point(12, 47);
             dgvSubastas.MultiSelect = false;

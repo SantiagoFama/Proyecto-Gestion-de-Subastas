@@ -29,7 +29,7 @@ namespace ProyectoSubasta.Services
         public bool Pujar(int subastaId, int postorId)
         {
             Subasta? subasta = repository.ObtenerSubasta(subastaId);
-            if (subasta == null || subasta.Estado == "Cerrada")
+            if (subasta == null || subasta.Estado != "Abierta")
                 return false;
 
             Postor? postor = repository.ObtenerPostor(postorId);
@@ -45,7 +45,7 @@ namespace ProyectoSubasta.Services
             if (subasta == null)
                 return false;
 
-            if (subasta.Estado == "Cerrada" || subasta.Estado == "Programada")
+            if (subasta.Estado != "Abierta")
             {
                 return false; 
             }

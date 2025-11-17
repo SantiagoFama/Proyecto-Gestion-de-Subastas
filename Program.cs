@@ -1,7 +1,6 @@
 using System;
 using System.Windows.Forms;
 using ProyectoSubasta.Views;
-using ProyectoSubasta.Repository;
 
 namespace ProyectoSubasta
 {

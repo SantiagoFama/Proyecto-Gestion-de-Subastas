@@ -19,7 +19,6 @@ namespace ProyectoSubasta.Views
             postorId = PostorId;
         }
 
-
         private void CargarSubastasGrid()
         {
             List<Subasta> lista = subastaController.ListaSubastas();
@@ -27,7 +26,6 @@ namespace ProyectoSubasta.Views
             dgvSubastas.DataSource = lista;
             PersonalizarGrid();
         }
-
 
         private void PersonalizarGrid()
         {
@@ -40,7 +38,7 @@ namespace ProyectoSubasta.Views
             dgvSubastas.Columns["Pujas"].Visible = false;
             dgvSubastas.Columns["PrecioPuja"].Visible = false;
             
-            // agregar espacio en medio
+            // corregir nombres
             dgvSubastas.Columns["PrecioInicial"].HeaderText = "Precio Inicial";
             dgvSubastas.Columns["HorarioInicio"].HeaderText = "Fecha Inicio";
             dgvSubastas.Columns["FechaFin"].HeaderText = "Fecha Cierre";

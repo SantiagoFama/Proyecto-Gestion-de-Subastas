@@ -20,11 +20,6 @@ namespace ProyectoSubasta.Views
             postorId = PostorId;
         }
 
-        private void VerDetalle_Load(object sender, EventArgs e)
-        {
-            CargarDetalles();
-        }
-
         private void CargarDetalles()
         {
             Subasta subasta = controller.ObtenerSubastaCompleta(subastaId);
@@ -86,6 +81,10 @@ namespace ProyectoSubasta.Views
         private void btnCerrar_Click(object sender, EventArgs e)
         {
             Close();
+        }
+        private void VerDetalle_Load(object sender, EventArgs e)
+        {
+            CargarDetalles();
         }
     }
 }

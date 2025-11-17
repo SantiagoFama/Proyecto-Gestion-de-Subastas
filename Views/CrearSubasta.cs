@@ -29,8 +29,12 @@ namespace ProyectoSubasta.Views
                 DateTime fecha = date_Fecha.Value.Date;
                 DateTime hora = date_Hora.Value;
                 decimal duracion = numDuracion.Value;
+                
                 bool ok = subastaController.CrearSubasta(articulo, subastador, precioInicial, precioPuja, fecha, hora, duracion);
-                if (ok) MessageBox.Show("Subasta creada con exito.");
+                if (ok)
+                    MessageBox.Show("Subasta creada con exito.");
+                else
+                    MessageBox.Show("Error al crear la subasta");
             } 
             catch (Exception ex) 
             { 
