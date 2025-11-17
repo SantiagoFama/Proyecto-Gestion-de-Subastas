@@ -21,16 +21,6 @@ namespace ProyectoSubasta.Repository
             return true;
         }
 
-        public Subasta? ObtenerSubasta(int subastaId)
-        {
-            return _context.Subastas.FirstOrDefault(s => s.Id == subastaId);
-        }
-
-        public Subasta? ObtenerSubastaConPostores(int subastaId)
-        {
-            return _context.Subastas.Include(s => s.Postores).FirstOrDefault(s => s.Id == subastaId);
-        }
-
         public bool ActualizarSubasta(Subasta subasta)
         {
             _context.Entry(subasta).State = EntityState.Modified;
@@ -50,20 +40,27 @@ namespace ProyectoSubasta.Repository
             return true;
         }
 
+
+        public Subasta? ObtenerSubasta(int subastaId)
+        {
+            return _context.Subastas.Include(s => s.Postores).FirstOrDefault(s => s.Id == subastaId);
+        }
+
+
         public List<Subasta> ListaSubastas()
         {
-            return _context.Subastas.Include(s => s.Subastador).ToList();
+            return _context.Subastas.Include(s => s.Subastador).AsNoTracking().ToList();
         }
 
         public List<Subasta> FiltrarSubastasPorPostor(int dni)
         {
-            return _context.Subastas.Include(s => s.Postores).Include(s => s.Subastador)
+            return _context.Subastas.Include(s => s.Postores).Include(s => s.Subastador).AsNoTracking()
                 .Where(s => s.Postores.Any(p => p.Dni == dni)).ToList();
         }
 
         public List<Subasta> FiltrarSubastasPorSubastador(int subastadorId)
         {
-            return _context.Subastas.Include(s => s.Subastador).
+            return _context.Subastas.Include(s => s.Subastador).AsNoTracking().
                 Where(s => s.Subastador.Dni == subastadorId).ToList();
         }
 

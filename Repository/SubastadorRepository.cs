@@ -1,12 +1,18 @@
 ﻿using ProyectoSubasta.Models;
 using System.Collections.Generic;
 using System.Linq;
-using Microsoft.EntityFrameworkCore;
 
 namespace ProyectoSubasta.Repository
 {
-    public class SubastadorRepository(DBcontext context)
+    public class SubastadorRepository
     {
+        private readonly DBcontext context;
+
+        public SubastadorRepository(DBcontext _context)
+        {
+            context = _context;
+        }
+            
         public void Agregar(Subastador subastador)
         {
             context.Subastadores.Add(subastador);
@@ -25,14 +31,13 @@ namespace ProyectoSubasta.Repository
 
         public bool Eliminar(int dni)
         {
-            var subastador = ObtenerPorId(dni);
-            if (subastador != null)
-            {
-                context.Subastadores.Remove(subastador);
-                context.SaveChanges();
-                return true;
-            }
-            return false;
+            Subastador? subastador = ObtenerPorId(dni);
+            if (subastador == null)
+                return false;
+
+            context.Subastadores.Remove(subastador);
+            context.SaveChanges();
+            return true;
         }
     }
 }

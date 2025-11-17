@@ -5,8 +5,15 @@ using Microsoft.EntityFrameworkCore;
 
 namespace ProyectoSubasta.Repository
 {
-    public class PostorRepository(DBcontext context)
+    public class PostorRepository
     {
+        private readonly DBcontext context;
+
+        public PostorRepository(DBcontext _context)
+        {
+            context = _context;
+        }
+
         public void AgregarPostor(Postor postor)
         {
             context.Postores.Add(postor);

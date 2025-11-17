@@ -16,6 +16,7 @@ namespace ProyectoSubasta.Models
         private int _pujas;
         private Postor? _ganador;
         private List<Postor> _postores;
+        private string _estado;
 
         public Subasta(string articulo, Subastador subastador, decimal precioInicial, decimal precioPuja, DateTime fecha, DateTime horarioInicio, decimal duracion)
         {
@@ -27,7 +28,6 @@ namespace ProyectoSubasta.Models
             Fecha = fecha.Date;
             Duracion = duracion;
             Postores = new List<Postor>();
-
             Pujas = 0;
             Estado = "Programada";
         }
@@ -62,8 +62,8 @@ namespace ProyectoSubasta.Models
             get => _duracion;
             set
             {
-                if (value < 30)
-                    throw new ArgumentException("La duración no puede ser menor a 30 minutos.");
+                if (value < 0)
+                    throw new ArgumentException("La duración no puede ser menor a 0");
                 _duracion = value;
             }
         }
@@ -120,9 +120,11 @@ namespace ProyectoSubasta.Models
             set => _postores = value;
         }
 
-
-
-        public string Estado { get; set; }
+        public string Estado 
+        {
+            get => _estado;
+            set => _estado = value;
+        }
 
         public DateTime FechaFin
         {

@@ -29,15 +29,10 @@ namespace ProyectoSubasta.Services
         public bool Pujar(int subastaId, int postorId)
         {
             Subasta? subasta = repository.ObtenerSubasta(subastaId);
-            if (subasta == null)
+            if (subasta == null || subasta.Estado == "Cerrada")
                 return false;
 
-            if (subasta.Estado == "Cerrada")
-            {
-                return false; // No puedes ingresar a una subasta cerrada
-            }
-
-            Postor postor = repository.ObtenerPostor(postorId);
+            Postor? postor = repository.ObtenerPostor(postorId);
             subasta.Ganador = postor;
             return repository.ActualizarSubasta(subasta);
         }
@@ -69,8 +64,8 @@ namespace ProyectoSubasta.Services
 
         public bool IngresoPostor(int subastaId, int postorId)
         {
-            Subasta? subasta = repository.ObtenerSubastaConPostores(subastaId);
-            if (subasta == null)
+            Subasta? subasta = repository.ObtenerSubasta(subastaId);
+            if (subasta == null || subasta.Estado == "Cerrada")
                 return false;
 
             bool estaIngresado = subasta.Postores.Any(p => p.Dni == postorId);
@@ -85,8 +80,8 @@ namespace ProyectoSubasta.Services
 
         public bool EgresoPostor(int subastaId, int postorId)
         {
-            Subasta? subasta = repository.ObtenerSubastaConPostores(subastaId);
-            if (subasta == null)
+            Subasta? subasta = repository.ObtenerSubasta(subastaId);
+            if (subasta == null || subasta.Estado =="Cerrada")
                 return false;
 
             bool estaIngresado = subasta.Postores.Any(p => p.Dni == postorId);

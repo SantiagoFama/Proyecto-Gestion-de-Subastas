@@ -19,9 +19,11 @@
         #region Windows Form Designer generated code
         private void InitializeComponent()
         {
+            components = new System.ComponentModel.Container();
             dgvSubastas = new System.Windows.Forms.DataGridView();
             btn_IngresarSubasta = new System.Windows.Forms.Button();
             labelTitulo = new System.Windows.Forms.Label();
+            timer1 = new System.Windows.Forms.Timer(components);
             ((System.ComponentModel.ISupportInitialize)dgvSubastas).BeginInit();
             SuspendLayout();
             // 
@@ -57,7 +59,13 @@
             labelTitulo.TabIndex = 4;
             labelTitulo.Text = "Lista de todas las subastas";
             // 
-            // ListaSubastasView
+            // timer1
+            // 
+            timer1.Enabled = true;
+            timer1.Interval = 5000;
+            timer1.Tick += timer1_Tick;
+            // 
+            // ListaSubastas
             // 
             AutoScaleDimensions = new System.Drawing.SizeF(8F, 20F);
             AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
@@ -65,7 +73,7 @@
             Controls.Add(labelTitulo);
             Controls.Add(btn_IngresarSubasta);
             Controls.Add(dgvSubastas);
-            Name = "ListaSubastasView";
+            Name = "ListaSubastas";
             Text = "ListaSubastasView";
             Load += ListaSubastasView_Load;
             ((System.ComponentModel.ISupportInitialize)dgvSubastas).EndInit();
@@ -74,5 +82,7 @@
         }
 
         #endregion
+
+        private System.Windows.Forms.Timer timer1;
     }
 }

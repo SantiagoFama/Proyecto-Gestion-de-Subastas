@@ -37,7 +37,6 @@ namespace ProyectoSubasta.Views
             dgvSubastas.Columns["HorarioInicio"].Visible = false;
             dgvSubastas.Columns["Duracion"].Visible = false;
             dgvSubastas.Columns["Ganador"].Visible = false;
-            dgvSubastas.Columns["Finalizada"].Visible = false;
             dgvSubastas.Columns["Pujas"].Visible = false;
             dgvSubastas.RowHeadersVisible = false;
 
