@@ -10,20 +10,22 @@ namespace ProyectoSubasta.Views
     {
         private readonly SubastaController subastaController;
         private readonly SubastadorController subastadorController;
+        private readonly int subastadorId;
 
-        public CrearSubasta(DBcontext context)
+        public CrearSubasta(DBcontext context, int dni)
         {
             InitializeComponent();
 
             subastaController = new SubastaController(context);
             subastadorController = new SubastadorController(context);
+            subastadorId = dni;
         }
 
         private void crear_Click(object sender, EventArgs e)
         {
             try {
                 string articulo = text_Articulo.Text;
-                Subastador subastador = (Subastador)boxSubastadores.SelectedItem;
+                Subastador subastador = subastadorController.ObtenerSubastador(subastadorId);
                 decimal precioInicial = num_PrecioInicial.Value;
                 decimal precioPuja = num_PrecioPuja.Value;
                 DateTime fecha = date_Fecha.Value.Date;
@@ -41,12 +43,6 @@ namespace ProyectoSubasta.Views
                 MessageBox.Show("Error: " + ex.Message); 
                 return;
             }
-        }
-
-        private void CrearSubasta_Load(object sender, EventArgs e)
-        {
-            boxSubastadores.Items.Clear();
-            boxSubastadores.DataSource = subastadorController.ListarSubastadores();
         }
     }
 }

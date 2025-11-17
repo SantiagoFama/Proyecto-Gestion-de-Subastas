@@ -97,7 +97,7 @@ namespace ProyectoSubasta.Views
 
         private void btnCrearSubasta_Click(object sender, EventArgs e)
         {
-            CargarVista(new CrearSubasta(context));
+            CargarVista(new CrearSubasta(context, dniUsuario));
         }
 
         private void btnMisSubastasSubastador_Click(object sender, EventArgs e)

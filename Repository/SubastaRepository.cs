@@ -49,8 +49,7 @@ namespace ProyectoSubasta.Repository
         public Subasta? ObtenerSubastaCompleta(int subastaId)
         {
             return context.Subastas.Include(s => s.Subastador).Include(s => s.Ganador)
-                .Include(s => s.Postores)
-                .FirstOrDefault(s => s.Id == subastaId);
+                .Include(s => s.Postores).FirstOrDefault(s => s.Id == subastaId);
         }
 
         public List<Subasta> ListaSubastas()
@@ -60,7 +59,7 @@ namespace ProyectoSubasta.Repository
 
         public List<Subasta> FiltrarSubastasPorPostor(int postorId)
         {
-            // Usé el AsNoTracking porque si no los DataGrid no se actualizan correctamente al 
+            // Usé el AsNoTracking porque sino los DataGrid no se actualizan correctamente al 
             // estar actualizandose cada 5 segundos
             return context.Subastas.Include(s => s.Postores).Include(s => s.Subastador).AsNoTracking()
                 .Where(s => s.Postores.Any(p => p.Dni == postorId)).ToList();

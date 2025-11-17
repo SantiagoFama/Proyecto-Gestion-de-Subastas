@@ -32,8 +32,8 @@ namespace ProyectoSubasta.Views
 
             lblArticulo.Text = subasta.Articulo;
             lblSubastador.Text = subasta.Subastador.ToString();
-            lblPrecioInicial.Text = subasta.PrecioInicial.ToString("C");
-            lblPrecioActual.Text = subasta.PrecioActual.ToString("C");
+            lblPrecioInicial.Text = subasta.PrecioInicial.ToString();
+            lblPrecioActual.Text = subasta.PrecioActual.ToString();
             lblEstado.Text = subasta.Estado;
 
             if (subasta.Ganador != null)

@@ -4,13 +4,11 @@
     {
         private System.ComponentModel.IContainer components = null;
         private System.Windows.Forms.Label label1;
-        private System.Windows.Forms.Label label2;
         private System.Windows.Forms.Label label3;
         private System.Windows.Forms.Label label4;
         private System.Windows.Forms.Label label5;
         private System.Windows.Forms.Label label6;
         private System.Windows.Forms.Label label7;
-        private System.Windows.Forms.ComboBox boxSubastadores;
         private System.Windows.Forms.NumericUpDown num_PrecioInicial;
         private System.Windows.Forms.NumericUpDown num_PrecioPuja;
         private System.Windows.Forms.DateTimePicker date_Fecha;
@@ -33,8 +31,6 @@
         private void InitializeComponent()
         {
             label1 = new System.Windows.Forms.Label();
-            label2 = new System.Windows.Forms.Label();
-            boxSubastadores = new System.Windows.Forms.ComboBox();
             label3 = new System.Windows.Forms.Label();
             label4 = new System.Windows.Forms.Label();
             label5 = new System.Windows.Forms.Label();
@@ -61,27 +57,10 @@
             label1.TabIndex = 0;
             label1.Text = "Artículo:";
             // 
-            // label2
-            // 
-            label2.AutoSize = true;
-            label2.Location = new System.Drawing.Point(12, 57);
-            label2.Name = "label2";
-            label2.Size = new System.Drawing.Size(87, 20);
-            label2.TabIndex = 1;
-            label2.Text = "Subastador:";
-            // 
-            // boxSubastadores
-            // 
-            boxSubastadores.FormattingEnabled = true;
-            boxSubastadores.Location = new System.Drawing.Point(114, 54);
-            boxSubastadores.Name = "boxSubastadores";
-            boxSubastadores.Size = new System.Drawing.Size(151, 28);
-            boxSubastadores.TabIndex = 2;
-            // 
             // label3
             // 
             label3.AutoSize = true;
-            label3.Location = new System.Drawing.Point(12, 107);
+            label3.Location = new System.Drawing.Point(12, 71);
             label3.Name = "label3";
             label3.Size = new System.Drawing.Size(96, 20);
             label3.TabIndex = 3;
@@ -90,7 +69,7 @@
             // label4
             // 
             label4.AutoSize = true;
-            label4.Location = new System.Drawing.Point(12, 156);
+            label4.Location = new System.Drawing.Point(12, 126);
             label4.Name = "label4";
             label4.Size = new System.Drawing.Size(85, 20);
             label4.TabIndex = 4;
@@ -99,7 +78,7 @@
             // label5
             // 
             label5.AutoSize = true;
-            label5.Location = new System.Drawing.Point(12, 210);
+            label5.Location = new System.Drawing.Point(12, 173);
             label5.Name = "label5";
             label5.Size = new System.Drawing.Size(50, 20);
             label5.TabIndex = 5;
@@ -108,7 +87,7 @@
             // num_PrecioInicial
             // 
             num_PrecioInicial.Increment = new decimal(new int[] { 10, 0, 0, 0 });
-            num_PrecioInicial.Location = new System.Drawing.Point(114, 107);
+            num_PrecioInicial.Location = new System.Drawing.Point(114, 71);
             num_PrecioInicial.Maximum = new decimal(new int[] { 999999, 0, 0, 0 });
             num_PrecioInicial.Name = "num_PrecioInicial";
             num_PrecioInicial.Size = new System.Drawing.Size(150, 27);
@@ -117,7 +96,7 @@
             // num_PrecioPuja
             // 
             num_PrecioPuja.Increment = new decimal(new int[] { 10, 0, 0, 0 });
-            num_PrecioPuja.Location = new System.Drawing.Point(114, 154);
+            num_PrecioPuja.Location = new System.Drawing.Point(114, 126);
             num_PrecioPuja.Maximum = new decimal(new int[] { 999999, 0, 0, 0 });
             num_PrecioPuja.Name = "num_PrecioPuja";
             num_PrecioPuja.Size = new System.Drawing.Size(150, 27);
@@ -125,7 +104,7 @@
             // 
             // date_Fecha
             // 
-            date_Fecha.Location = new System.Drawing.Point(114, 210);
+            date_Fecha.Location = new System.Drawing.Point(114, 173);
             date_Fecha.Name = "date_Fecha";
             date_Fecha.Size = new System.Drawing.Size(250, 27);
             date_Fecha.TabIndex = 9;
@@ -133,7 +112,7 @@
             // label6
             // 
             label6.AutoSize = true;
-            label6.Location = new System.Drawing.Point(12, 261);
+            label6.Location = new System.Drawing.Point(12, 227);
             label6.Name = "label6";
             label6.Size = new System.Drawing.Size(45, 20);
             label6.TabIndex = 10;
@@ -142,7 +121,7 @@
             // date_Hora
             // 
             date_Hora.Format = System.Windows.Forms.DateTimePickerFormat.Time;
-            date_Hora.Location = new System.Drawing.Point(114, 261);
+            date_Hora.Location = new System.Drawing.Point(114, 222);
             date_Hora.Name = "date_Hora";
             date_Hora.ShowUpDown = true;
             date_Hora.Size = new System.Drawing.Size(250, 27);
@@ -158,7 +137,7 @@
             // btn_Crear
             // 
             btn_Crear.DialogResult = System.Windows.Forms.DialogResult.OK;
-            btn_Crear.Location = new System.Drawing.Point(12, 371);
+            btn_Crear.Location = new System.Drawing.Point(12, 354);
             btn_Crear.Name = "btn_Crear";
             btn_Crear.Size = new System.Drawing.Size(96, 44);
             btn_Crear.TabIndex = 13;
@@ -169,7 +148,7 @@
             // label7
             // 
             label7.AutoSize = true;
-            label7.Location = new System.Drawing.Point(12, 322);
+            label7.Location = new System.Drawing.Point(12, 272);
             label7.Name = "label7";
             label7.Size = new System.Drawing.Size(72, 20);
             label7.TabIndex = 14;
@@ -178,7 +157,7 @@
             // numDuracion
             // 
             numDuracion.Increment = new decimal(new int[] { 10, 0, 0, 0 });
-            numDuracion.Location = new System.Drawing.Point(115, 320);
+            numDuracion.Location = new System.Drawing.Point(114, 272);
             numDuracion.Maximum = new decimal(new int[] { 999999, 0, 0, 0 });
             numDuracion.Name = "numDuracion";
             numDuracion.Size = new System.Drawing.Size(150, 27);
@@ -201,12 +180,9 @@
             Controls.Add(label5);
             Controls.Add(label4);
             Controls.Add(label3);
-            Controls.Add(boxSubastadores);
-            Controls.Add(label2);
             Controls.Add(label1);
             Name = "CrearSubasta";
             Text = "CreacionSubasta";
-            Load += CrearSubasta_Load;
             ((System.ComponentModel.ISupportInitialize)num_PrecioInicial).EndInit();
             ((System.ComponentModel.ISupportInitialize)num_PrecioPuja).EndInit();
             ((System.ComponentModel.ISupportInitialize)numDuracion).EndInit();
