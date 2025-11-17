@@ -27,7 +27,7 @@ namespace ProyectoSubasta.Views
 
         private void CargarDetalles()
         {
-            Subasta subasta = controller.ObtenerSubasta(subastaId);
+            Subasta subasta = controller.ObtenerSubastaCompleta(subastaId);
             if (subasta == null)
             {
                 MessageBox.Show("Error al cargar la subasta.");
@@ -35,12 +35,30 @@ namespace ProyectoSubasta.Views
                 return;
             }
 
-            
+            lblArticulo.Text = subasta.Articulo;
+            lblSubastador.Text = subasta.Subastador.ToString();
+            lblPrecioInicial.Text = subasta.PrecioInicial.ToString("C");
+            lblPrecioActual.Text = subasta.PrecioActual.ToString("C");
+            lblEstado.Text = subasta.Estado;
 
-            if (subasta.Estado == "Abierta")
+            if (subasta.Ganador != null)
             {
-                //btnPujar.Enabled = false;
-                //btnPujar.Text = "Subasta Finalizada";
+                lblGanador.Text = subasta.Ganador.ToString();
+            }
+            else
+            {
+                lblGanador.Text = "Nadie ha pujado aún";
+            }
+
+            if (subasta.Estado != "Abierta")
+            {
+                btnPujar.Enabled = false;
+                btnPujar.Text = "No Disponible";
+            }
+            else
+            {
+                btnPujar.Enabled = true;
+                btnPujar.Text = "PUJAR";
             }
         }
 
@@ -51,8 +69,8 @@ namespace ProyectoSubasta.Views
                 bool ok = controller.Pujar(subastaId, postorId);
                 if (ok)
                 {
-                    MessageBox.Show("¡Puja realizada con éxito!");
-                    CargarDetalles(); 
+                    MessageBox.Show("Puja realizada con éxito");
+                    CargarDetalles();
                 }
                 else
                 {

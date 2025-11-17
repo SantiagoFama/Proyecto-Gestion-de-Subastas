@@ -43,9 +43,14 @@ namespace ProyectoSubasta.Repository
 
         public Subasta? ObtenerSubasta(int subastaId)
         {
-            return _context.Subastas.Include(s => s.Postores).FirstOrDefault(s => s.Id == subastaId);
+            return _context.Subastas.FirstOrDefault(s => s.Id == subastaId);
         }
 
+        public Subasta? ObtenerSubastaCompleta(int subastaId)
+        {
+            return _context.Subastas.Include(s => s.Subastador).Include(s => s.Ganador)
+                .FirstOrDefault(s => s.Id == subastaId);
+        }
 
         public List<Subasta> ListaSubastas()
         {

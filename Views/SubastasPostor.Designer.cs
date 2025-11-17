@@ -20,9 +20,11 @@
 
         private void InitializeComponent()
         {
+            components = new System.ComponentModel.Container();
             dgvSubastas = new System.Windows.Forms.DataGridView();
             btnVerDetalle = new System.Windows.Forms.Button();
             btnSalirSubasta = new System.Windows.Forms.Button();
+            timer1 = new System.Windows.Forms.Timer(components);
             ((System.ComponentModel.ISupportInitialize)dgvSubastas).BeginInit();
             SuspendLayout();
             // 
@@ -56,6 +58,12 @@
             btnSalirSubasta.UseVisualStyleBackColor = true;
             btnSalirSubasta.Click += btnSalirSubasta_Click;
             // 
+            // timer1
+            // 
+            timer1.Enabled = true;
+            timer1.Interval = 5000;
+            timer1.Tick += timer1_Tick;
+            // 
             // SubastasPostor
             // 
             AutoScaleDimensions = new System.Drawing.SizeF(8F, 20F);
@@ -71,5 +79,7 @@
         }
 
         #endregion
+
+        private System.Windows.Forms.Timer timer1;
     }
 }

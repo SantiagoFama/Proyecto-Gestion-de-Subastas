@@ -12,10 +12,13 @@ namespace ProyectoSubasta.Views
     {
         private readonly SubastaController controller;
         private readonly int postorId;
+        private readonly DBcontext context;
+        private readonly VerDetalle verDetalle;
 
-        public SubastasPostor(DBcontext context,int PostorId)
+        public SubastasPostor(DBcontext _context, int PostorId)
         {
             InitializeComponent();
+            context = _context;
             controller = new SubastaController(context);
             postorId = PostorId;
             CargarSubastasGrid();
@@ -31,38 +34,46 @@ namespace ProyectoSubasta.Views
 
         private void PersonalizarGrid()
         {
+            // ocultar columnas 
+            dgvSubastas.RowHeadersVisible = false;
             dgvSubastas.Columns["Id"].Visible = false;
             dgvSubastas.Columns["Fecha"].Visible = false;
-            dgvSubastas.Columns["HorarioInicio"].Visible = false;
             dgvSubastas.Columns["Duracion"].Visible = false;
             dgvSubastas.Columns["Ganador"].Visible = false;
             dgvSubastas.Columns["Pujas"].Visible = false;
-            dgvSubastas.RowHeadersVisible = false;
+            dgvSubastas.Columns["PrecioPuja"].Visible = false;
 
-            dgvSubastas.Columns["PrecioInicial"].DefaultCellStyle.Format = "C";
-            dgvSubastas.Columns["PrecioPuja"].DefaultCellStyle.Format = "C";
-
-            dgvSubastas.Columns["Estado"].DisplayIndex = 0;
-            dgvSubastas.Columns["Articulo"].DisplayIndex = 1;
-            dgvSubastas.Columns["PrecioPuja"].DisplayIndex = 2;
-            dgvSubastas.Columns["PrecioInicial"].DisplayIndex = 3;
-            dgvSubastas.Columns["Subastador"].DisplayIndex = 4;
-            dgvSubastas.Columns["PrecioActual"].DisplayIndex = 5;
-
+            // agregar espacio en medio
             dgvSubastas.Columns["PrecioInicial"].HeaderText = "Precio Inicial";
-            dgvSubastas.Columns["PrecioPuja"].HeaderText = "Precio Puja";
+            dgvSubastas.Columns["HorarioInicio"].HeaderText = "Fecha Inicio";
+            dgvSubastas.Columns["FechaFin"].HeaderText = "Fecha Cierre";
             dgvSubastas.Columns["PrecioActual"].HeaderText = "Precio Actual";
 
+            // ordenar columnas
+            dgvSubastas.Columns["Estado"].DisplayIndex = 0;
+            dgvSubastas.Columns["Articulo"].DisplayIndex = 1;
+            dgvSubastas.Columns["PrecioActual"].DisplayIndex = 2;
+            dgvSubastas.Columns["PrecioInicial"].DisplayIndex = 3;
+            dgvSubastas.Columns["Subastador"].DisplayIndex = 4;
             dgvSubastas.AutoSizeColumnsMode = DataGridViewAutoSizeColumnsMode.Fill;
         }
 
         private void btnVerDetalle_Click(object sender, EventArgs e)
         {
+            if (dgvSubastas.CurrentRow == null)
+            {
+                MessageBox.Show("Por favor, seleccione una subasta de la grilla para ver los detalles.");
+                return;
+            }
 
+            var fila = dgvSubastas.CurrentRow;
+            int id = (int)fila.Cells["Id"].Value;
+            VerDetalle verDetalle = new VerDetalle(context, id, postorId);
+            verDetalle.ShowDialog();
         }
 
         private void btnSalirSubasta_Click(object sender, EventArgs e)
-        {   
+        {
             if (dgvSubastas.CurrentRow == null)
             {
                 MessageBox.Show("Por favor, seleccione una subasta de la grilla para salir.");
@@ -74,6 +85,11 @@ namespace ProyectoSubasta.Views
 
             bool ok = controller.EgresoPostor(id, postorId);
             if (ok) MessageBox.Show("Saliste Correctamente de la Subasta.");
+            CargarSubastasGrid();
+        }
+
+        private void timer1_Tick(object sender, EventArgs e)
+        {
             CargarSubastasGrid();
         }
     }

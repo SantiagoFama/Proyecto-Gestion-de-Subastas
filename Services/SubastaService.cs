@@ -34,6 +34,7 @@ namespace ProyectoSubasta.Services
 
             Postor? postor = repository.ObtenerPostor(postorId);
             subasta.Ganador = postor;
+            subasta.Pujas++;
             return repository.ActualizarSubasta(subasta);
         }
 
@@ -64,7 +65,7 @@ namespace ProyectoSubasta.Services
 
         public bool IngresoPostor(int subastaId, int postorId)
         {
-            Subasta? subasta = repository.ObtenerSubasta(subastaId);
+            Subasta? subasta = repository.ObtenerSubastaCompleta(subastaId);
             if (subasta == null || subasta.Estado == "Cerrada")
                 return false;
 
@@ -80,7 +81,7 @@ namespace ProyectoSubasta.Services
 
         public bool EgresoPostor(int subastaId, int postorId)
         {
-            Subasta? subasta = repository.ObtenerSubasta(subastaId);
+            Subasta? subasta = repository.ObtenerSubastaCompleta(subastaId);
             if (subasta == null || subasta.Estado =="Cerrada")
                 return false;
 
@@ -115,6 +116,10 @@ namespace ProyectoSubasta.Services
             return repository.ObtenerSubasta(subastaId);
         }
 
+        public Subasta ObtenerSubastaCompleta(int subastaId)
+        {
+            return repository.ObtenerSubastaCompleta(subastaId);
+        }
 
         public List<Subasta> FiltrarSubastasPorPostor(int dni)
         {
