@@ -16,13 +16,12 @@ namespace ProyectoSubasta.Services
 
         public bool CrearSubastador(Subastador subastador)
         {
-            Subastador existe = repository.ObtenerPorId(subastador.Dni);
+            Subastador? existe = repository.ObtenerPorId(subastador.Dni);
             if (existe != null)
             {
                 return false;
             }
-            repository.Agregar(subastador);
-            return true;
+            return repository.AgregarSubastador(subastador);
         }
 
         public List<Subastador> ObtenerSubastadores()
@@ -37,7 +36,12 @@ namespace ProyectoSubasta.Services
 
         public bool EliminarSubastador(int dni)
         {
-            return repository.Eliminar(dni);
+            Subastador? subastador = repository.ObtenerPorId(dni);
+            if (subastador == null)
+            {
+                return false;
+            }
+            return repository.EliminarSubastador(subastador);
         }
     }
 }

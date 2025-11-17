@@ -21,8 +21,7 @@ namespace ProyectoSubasta.Services
             {
                 return false;
             }
-            repository.AgregarPostor(postor);
-            return true;
+            return repository.AgregarPostor(postor);
         }
 
         public List<Postor> ObtenerPostores()
@@ -37,13 +36,12 @@ namespace ProyectoSubasta.Services
 
         public bool EliminarPostor(int dni)
         {
-            Postor existe = repository.ObtenerPorId(dni);
-            if (existe == null)
+            Postor postor = repository.ObtenerPorId(dni);
+            if (postor == null)
             {
                 return false;
             }
-            repository.EliminarPostor(dni);
-            return true;
+            return repository.EliminarPostor(postor);
         }
     }
 }

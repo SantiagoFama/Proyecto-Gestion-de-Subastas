@@ -29,6 +29,7 @@ namespace ProyectoSubasta.Controllers
         {
             return service.FinalizarSubasta(subastaId);
         }
+
         public Postor ObtenerGanador(int subastaId)
         {
             return service.ObtenerGanador(subastaId);

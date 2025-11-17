@@ -10,7 +10,6 @@ namespace ProyectoSubasta.Views
     public partial class MenuPrincipal : Form
     {
         private CrearUser crearuserView;
-        private CrearSubasta crearSubastaView;
         private readonly DBcontext context;
         private int dniUsuario;
         private string rolUsuario;

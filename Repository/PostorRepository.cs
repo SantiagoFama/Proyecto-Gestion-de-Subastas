@@ -13,10 +13,11 @@ namespace ProyectoSubasta.Repository
             context = _context;
         }
 
-        public void AgregarPostor(Postor postor)
+        public bool AgregarPostor(Postor postor)
         {
             context.Postores.Add(postor);
             context.SaveChanges();
+            return true;
         }
 
         public Postor ObtenerPorId(int dni)
@@ -29,14 +30,11 @@ namespace ProyectoSubasta.Repository
             return context.Postores.ToList();
         }
 
-        public void EliminarPostor(int dni)
+        public bool EliminarPostor(Postor postor)
         {
-            Postor postorAEliminar = ObtenerPorId(dni);
-            if (postorAEliminar != null)
-            {
-                context.Postores.Remove(postorAEliminar);
-                context.SaveChanges();
-            }
+            context.Postores.Remove(postor);
+            context.SaveChanges();
+            return true;
         }
     }
 }

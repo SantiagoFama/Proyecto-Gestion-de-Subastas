@@ -15,7 +15,6 @@ namespace ProyectoSubasta.Services
             repository = new SubastaRepository(context);
         }
 
-
         public bool CrearSubasta(Subasta subasta)
         {
             Subasta? existe = repository.ObtenerSubasta(subasta.Id);
@@ -24,7 +23,6 @@ namespace ProyectoSubasta.Services
 
             return repository.CrearSubasta(subasta);
         }
-
 
         public bool Pujar(int subastaId, int postorId)
         {
@@ -37,7 +35,6 @@ namespace ProyectoSubasta.Services
             subasta.Pujas++;
             return repository.ActualizarSubasta(subasta);
         }
-
 
         public bool FinalizarSubasta(int subastaId)
         {
@@ -54,14 +51,12 @@ namespace ProyectoSubasta.Services
             return repository.ActualizarSubasta(subasta);
         }
 
-
         public Postor ObtenerGanador(int subastaId)
         {
             Subasta? subasta = repository.ObtenerSubasta(subastaId);
 
             return subasta.Ganador;
         }
-
 
         public bool IngresoPostor(int subastaId, int postorId)
         {
@@ -78,7 +73,6 @@ namespace ProyectoSubasta.Services
             return repository.ActualizarSubasta(subasta);
         }
 
-
         public bool EgresoPostor(int subastaId, int postorId)
         {
             Subasta? subasta = repository.ObtenerSubastaCompleta(subastaId);
@@ -94,7 +88,6 @@ namespace ProyectoSubasta.Services
             return repository.ActualizarSubasta(subasta);
         }
 
-
         public bool EliminarSubasta(int subastaId)
         {
             Subasta subasta = repository.ObtenerSubasta(subastaId);
@@ -104,12 +97,10 @@ namespace ProyectoSubasta.Services
             return repository.EliminarSubasta(subastaId);
         }
 
-
         public List<Subasta> ListaSubastas()
         {
             return repository.ListaSubastas();
         }
-
 
         public Subasta ObtenerSubasta(int subastaId)
         {

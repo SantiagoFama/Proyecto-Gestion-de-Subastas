@@ -13,10 +13,11 @@ namespace ProyectoSubasta.Repository
             context = _context;
         }
             
-        public void Agregar(Subastador subastador)
+        public bool AgregarSubastador(Subastador subastador)
         {
             context.Subastadores.Add(subastador);
             context.SaveChanges();
+            return true;
         }
 
         public List<Subastador> ObtenerTodos()
@@ -29,12 +30,8 @@ namespace ProyectoSubasta.Repository
             return context.Subastadores.Find(dni);
         }
 
-        public bool Eliminar(int dni)
+        public bool EliminarSubastador(Subastador subastador)
         {
-            Subastador? subastador = ObtenerPorId(dni);
-            if (subastador == null)
-                return false;
-
             context.Subastadores.Remove(subastador);
             context.SaveChanges();
             return true;
