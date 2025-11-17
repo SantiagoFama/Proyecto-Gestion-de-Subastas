@@ -67,7 +67,7 @@ namespace ProyectoSubasta.Views
 
             bool ok = subastaController.IngresoPostor(subastaId, postorId);
             if (ok) MessageBox.Show("Ingresaste Correctamente. Para interactuar ve a 'Mis Subastas'.");
-            else MessageBox.Show("Error al ingresar a la subasta");
+            else MessageBox.Show("Error al ingresar a la subasta. verifica que esté abierta");
         }
 
         private void ListaSubastasView_Load(object sender, EventArgs e)

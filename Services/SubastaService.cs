@@ -39,13 +39,8 @@ namespace ProyectoSubasta.Services
         public bool FinalizarSubasta(int subastaId)
         {
             Subasta? subasta = repository.ObtenerSubasta(subastaId);
-            if (subasta == null)
+            if (subasta == null || subasta.Estado != "Abierta")
                 return false;
-
-            if (subasta.Estado != "Abierta")
-            {
-                return false; 
-            }
 
             subasta.Estado = "Cerrada";
             return repository.ActualizarSubasta(subasta);
@@ -61,7 +56,7 @@ namespace ProyectoSubasta.Services
         public bool IngresoPostor(int subastaId, int postorId)
         {
             Subasta? subasta = repository.ObtenerSubastaCompleta(subastaId);
-            if (subasta == null || subasta.Estado == "Cerrada")
+            if (subasta == null || subasta.Estado != "Abierta")
                 return false;
 
             bool estaIngresado = subasta.Postores.Any(p => p.Dni == postorId);
@@ -76,7 +71,7 @@ namespace ProyectoSubasta.Services
         public bool EgresoPostor(int subastaId, int postorId)
         {
             Subasta? subasta = repository.ObtenerSubastaCompleta(subastaId);
-            if (subasta == null || subasta.Estado =="Cerrada")
+            if (subasta == null || subasta.Estado !="Abierta")
                 return false;
 
             bool estaIngresado = subasta.Postores.Any(p => p.Dni == postorId);
@@ -90,7 +85,7 @@ namespace ProyectoSubasta.Services
 
         public bool EliminarSubasta(int subastaId)
         {
-            Subasta subasta = repository.ObtenerSubasta(subastaId);
+            Subasta? subasta = repository.ObtenerSubasta(subastaId);
             if (subasta == null)
                 return false;
 

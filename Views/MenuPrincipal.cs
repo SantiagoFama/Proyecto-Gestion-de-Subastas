@@ -42,7 +42,10 @@ namespace ProyectoSubasta.Views
                 using (var context = new DBcontext())
                 {
                     var ahora = DateTime.Now;
-
+                    //
+                    // Acá tuve que usar -HorarioInicio.AddMinutes((double)s.Duracion- porque EF no me 
+                    // reconocía la propiedad FechaFin
+                    //
                     var paraIniciar = context.Subastas.Where(s => s.Estado == "Programada" && 
                     s.HorarioInicio <= ahora && s.HorarioInicio.AddMinutes((double)s.Duracion) > ahora).ToList();
 
