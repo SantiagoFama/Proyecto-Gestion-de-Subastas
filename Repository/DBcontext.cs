@@ -13,9 +13,11 @@ namespace ProyectoSubasta.Repository
 
         protected override void OnConfiguring(DbContextOptionsBuilder options)
         {
+            //
+            // Tuve que usar esta ruta porque la ruta -Data Source=subastas.db- me daba problemas de conexion con la db 
+            //
             var folder = Environment.SpecialFolder.LocalApplicationData;
             var path = Environment.GetFolderPath(folder);
-
             var dbPath = Path.Combine(path, "subastas_proyecto.db");
 
             options.UseSqlite($"Data Source={dbPath}");
@@ -24,7 +26,9 @@ namespace ProyectoSubasta.Repository
         protected override void OnModelCreating(ModelBuilder modelBuilder)
         {
             base.OnModelCreating(modelBuilder);
-
+            //
+            // Acá tuve que definir las relaciones manualmente porque EF Core no las detectaba automáticamente
+            //
             modelBuilder.Entity<Subasta>().HasMany(s => s.Postores).WithMany(p => p.Subastas);
             modelBuilder.Entity<Subasta>().HasOne(s => s.Ganador).WithMany().HasForeignKey("GanadorDni").IsRequired(false);
         }

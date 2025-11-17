@@ -60,6 +60,8 @@ namespace ProyectoSubasta.Repository
 
         public List<Subasta> FiltrarSubastasPorPostor(int postorId)
         {
+            // Usé el AsNoTracking porque si no los DataGrid no se actualizan correctamente al 
+            // estar actualizandose cada 5 segundos
             return context.Subastas.Include(s => s.Postores).Include(s => s.Subastador).AsNoTracking()
                 .Where(s => s.Postores.Any(p => p.Dni == postorId)).ToList();
         }

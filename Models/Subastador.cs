@@ -31,6 +31,7 @@ namespace ProyectoSubasta.Models
                 _dni = value;
             }
         }
+
         public string Nombre
         {
             get => _nombre;
